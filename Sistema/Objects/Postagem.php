@@ -5,7 +5,7 @@
  *
  * @author Rafael
  */
-namespace Data\Object;
+namespace Object;
 class Postagem {
     public $id; //Int
     public $titulo; //String

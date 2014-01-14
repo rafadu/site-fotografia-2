@@ -5,10 +5,11 @@
  *
  * @author Rafael
  */
-namespace Data\Object;
+namespace Object;
 class Imagem {
     public $id; //Int
-    public $caminhoImagem; //MediumBlob
+    public $caminhoImagem; //String
+    public $imagem; //MediumBlob
     public $link; //String
     public $idTipoImagem; //Int
     public $idPostagem; //Int

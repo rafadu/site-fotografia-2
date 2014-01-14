@@ -5,19 +5,20 @@
  *
  * @author Rafael
  */
+namespace Application;
 class Connection {
     //classe de conexão com o banco de dados, sempre instanciar
     //ao realizar uma operação lá
-    private $address='localhost';
-    private $dbuser='rduarte';
-    private $dbpassword='rafael';
-    private $dbname='fotografia';
+    private static $address='localhost';
+    private static $dbuser='rduarte';
+    private static $dbpassword='rafael';
+    private static $dbname='fotografia';
     
     //abre a conexão com o banco de dados e retorna um objeto mysqli que permite
     //fazer as operações com o database (gera uma interface para realizar as 
     //operações)
     public static function Open(){
-	$conn = new mysqli($this->address,$this->dbuser,$this->dbpassword,$this->dbname);
+	$conn = new \mysqli(self::address,self::dbuser,self::dbpassword,self::dbname);
         return($conn);
     }
     
