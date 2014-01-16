@@ -9,6 +9,8 @@ use Object\Imagem;
 class ImagemModel implements ICrud{
 		public function create($object){
 			try{
+                                //adicionar barras invertidas
+                                $object->caminhoImagem = str_replace("\\", "\\\\", $object->caminhoImagem);
 				//criar comando sql
 				$sqlCommand = "INSERT INTO Imagem(caminhoImagem,link,idTipoImagem,idPostagem)
 						VALUES('$object->caminhoImagem','$object->link',$object->idTipoImagem,$object->idPostagem)";

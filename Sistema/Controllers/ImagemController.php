@@ -4,6 +4,7 @@ require_once("..\Models\ImagemModel.php");
 require_once("..\Objects\Imagem.php");
 
 use Application\Controller;
+use Object\Imagem; 
 class ImagemController extends Controller{
 	public function create($idPostagem){
 		try{

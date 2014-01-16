@@ -4,6 +4,7 @@ require_once("..\Models\TagModel.php");
 require_once("..\Objects\Tag.php");
 
 use Application\Controller;
+use Object\Tag;
 class TagController extends Controller{
 	public function create(){
 		try{
@@ -15,7 +16,7 @@ class TagController extends Controller{
 			foreach($_POST as $field=>$value){
 				//strpos retorna posição em que ele encontra a substring
 				//maiores informações: http://www.php.net/manual/pt_BR/function.strpos.php
-				if (strpos($field,"tag") !== false){
+				if (strpos($field,"tag") !== false && strpos($field,"tag")==0){
 					if (trim($value)!==''){
 						$idFromDatabase = $tagModel->readByTag($value);
 						if($idFromDatabase == 0){
