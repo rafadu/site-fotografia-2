@@ -45,5 +45,16 @@ class ImagemController extends Controller{
 			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());
 		}
 	}
+
+	public function read($idPostagem){
+		try{
+			//chamar model
+			$obj = new ImagemModel();
+			return $obj->read($idPostagem);
+		}
+		catch(Exception $ex){
+			throw new Exception("Erro ao selecionar imagens. Fase Controller".$ex->getMessage());
+		}
+	}
 }
 ?>

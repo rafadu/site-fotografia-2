@@ -42,5 +42,15 @@ class TagController extends Controller{
 			throw new Exception("Erro ao gravar Tag. Fase Controller".getMessage());
 		}
 	}
+
+	public function read($idPostagem){
+		try{
+			$tagModel = new TagModel();
+			return $tagModel->read($idPostagem);
+		}
+		catch(Exception $ex){
+			throw new Exception("Erro ao selecionar Tags para post na index. Fase Controller".getMessage());	
+		}
+	}
 }
 ?>

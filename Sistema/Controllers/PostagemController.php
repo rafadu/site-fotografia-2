@@ -11,7 +11,7 @@ use Object\Postagem;
 class PostagemController extends Controller{
 	public function create(){
 		try{
-			//verfiicar valores do formulário
+			//verificar valores do formulário
 
 			//criar objeto da postagem
 			$postagemObj = new Postagem();
@@ -71,6 +71,23 @@ class PostagemController extends Controller{
 		catch(Exception $ex){
 			throw new Exception("Erro ao criar postagem na fase do Controller. ".$ex->getMessage());
 		}
+	}
+
+	public function loadIndexPosts(){
+		//selecionar 2 ultimos posts
+		$postModel = new PostagemModel();
+		$imagemController = new ImagemController();
+		$tagController = new TagController();
+		$postagens = $postModel->read();
+		foreach ($postagens as $postagem){
+			//selecionar imagens desses dois ultimos posts
+			$postagem['imagens'] = imagemController->read($postagem->id);
+			//selecionar tags desses dois ultimos posts
+			$postagem['tags'] = tagController->read($postagem->id);
+			//montar array				
+		}
+		//retorna-lo
+		return JSONResult($postagens);
 	}
 }
 ?>

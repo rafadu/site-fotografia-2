@@ -28,7 +28,28 @@ class ImagemModel implements ICrud{
 			}
 		}
 
-		public function read(){}
+		public function read($idPostagem){
+			//read principal, entenda como o select usado para carregar as imagens dos posts da pagina index
+
+            //criar comando sql
+            $sqlCommand = "SELECT caminhoImagem FROM Imagem WHERE idTipoImagem=1 AND idPostagem=$idPostagem LIMIT 3";
+            //abrir conexão
+            $mysqli = Connection::Open();
+            //executar comando
+            $result = $mysqli->query($sqlCommand);
+            //guardar valores
+            $imagens = array()
+            while($row=$result->fetch_assoc()){
+            	$obj = new Imagem();
+            	$obj->caminhoImagem = $row['caminhoImagem'];
+            	$imagens[] = $obj;
+            }
+            //fechar conexão
+            $result->close();
+            $mysqli->close();
+            //retornar valores
+            return $imagens;
+		}
         public function update($object){}
         public function delete($key,$value,$isText){}
 }
