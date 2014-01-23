@@ -46,7 +46,7 @@ class TagController extends Controller{
 	public function read($idPostagem){
 		try{
 			$tagModel = new TagModel();
-			return $tagModel->read($idPostagem);
+			return $tagModel->readById($idPostagem);
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao selecionar Tags para post na index. Fase Controller".getMessage());	

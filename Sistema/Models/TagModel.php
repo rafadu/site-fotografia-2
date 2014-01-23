@@ -27,7 +27,8 @@ class TagModel implements ICrud{
 			throw new Exception("Erro ao inserir nova Tag no banco. ".$ex->getMessage());
 		}
 	}
-	public function read($idPostagem){
+        public function read(){}
+	public function readById($idPostagem){
                 //read principal, entenda como read para os posts da index
                 //criar comando sql
                 $sqlCommand="SELECT T.tag FROM Tag T INNER JOIN PostagemTag PT ON T.id = PT.idTag WHERE PT.idPostagem = $idPostagem";

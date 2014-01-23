@@ -27,8 +27,8 @@ class ImagemModel implements ICrud{
 				throw new Exception("Erro ao registrar imagem no banco. ".$ex->getMessage());
 			}
 		}
-
-		public function read($idPostagem){
+                public function read(){}
+		public function readById($idPostagem){
 			//read principal, entenda como o select usado para carregar as imagens dos posts da pagina index
 
             //criar comando sql
@@ -38,7 +38,7 @@ class ImagemModel implements ICrud{
             //executar comando
             $result = $mysqli->query($sqlCommand);
             //guardar valores
-            $imagens = array()
+            $imagens = array();
             while($row=$result->fetch_assoc()){
             	$obj = new Imagem();
             	$obj->caminhoImagem = $row['caminhoImagem'];

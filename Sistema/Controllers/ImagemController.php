@@ -50,7 +50,7 @@ class ImagemController extends Controller{
 		try{
 			//chamar model
 			$obj = new ImagemModel();
-			return $obj->read($idPostagem);
+			return $obj->readById($idPostagem);
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao selecionar imagens. Fase Controller".$ex->getMessage());

@@ -46,7 +46,7 @@ class PostagemModel implements ICrud{
         		$postagens[] = $obj;
         	}
         	//fechar conexão
-        	$result->close();
+        	$resultado->close();
         	$mysqli->close();
         	//retornar resultados
         	return $postagens;

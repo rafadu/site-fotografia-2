@@ -81,13 +81,13 @@ class PostagemController extends Controller{
 		$postagens = $postModel->read();
 		foreach ($postagens as $postagem){
 			//selecionar imagens desses dois ultimos posts
-			$postagem['imagens'] = imagemController->read($postagem->id);
+			$postagem->imagens = $imagemController->read($postagem->id);
 			//selecionar tags desses dois ultimos posts
-			$postagem['tags'] = tagController->read($postagem->id);
+			$postagem->tags = $tagController->read($postagem->id);
 			//montar array				
 		}
 		//retorna-lo
-		return JSONResult($postagens);
+                return $this->JSONResult($postagens);
 	}
 }
 ?>

@@ -11,7 +11,7 @@ class Connection {
     //ao realizar uma operação lá
     private static $address='localhost';
     private static $dbuser='rafadu';
-    private static $dbpassword='rafael916152'; 
+    private static $dbpassword='rafael'; 
     private static $dbname='fotografia';
     
     //abre a conexão com o banco de dados e retorna um objeto mysqli que permite
