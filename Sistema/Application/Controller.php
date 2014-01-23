@@ -23,7 +23,7 @@ class Controller {
     }
     
     public function JSONResult($array){
-        return json_encode($array);
+        echo json_encode($array);
     }
 }
 
