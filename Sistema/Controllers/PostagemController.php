@@ -78,7 +78,7 @@ class PostagemController extends Controller{
 		$postModel = new PostagemModel();
 		$imagemController = new ImagemController();
 		$tagController = new TagController();
-		$postagens = $postModel->read();
+		$postagens = array("postagens" => $postModel->read());
 		foreach ($postagens as $postagem){
 			//selecionar imagens desses dois ultimos posts
 			$postagem->imagens = $imagemController->read($postagem->id);
