@@ -5,7 +5,7 @@ var Index = function(){
 
 	var _constructor = function(){
 		//fazer a requisição ajax, passando o loadPosts como parametro de metodo de sucesso
-		var parameters = {"controller":"Postagem","method":"loadIndexPosts"};
+		var parameters = {"controller":"Postagem","method":"loadPosts","tipoPostagem":"0"};
 		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parameters,loadPosts);
 	}
 

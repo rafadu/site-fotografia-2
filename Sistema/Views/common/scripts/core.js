@@ -40,6 +40,19 @@ var Core = function(){
     this.getUrlVar= function(name){
         return getUrlVars()[name];
     }
+
+    var btnBuscaClick = function(){
+        //pegar valor do textBox
+        var parametroPesquisa = $("#txtBusca").val();
+        $(window.document.location).attr("href","busca.html?busca="+parametroPesquisa);
+    }
+
+    var _constructor = function(){
+        var btnBusca = $("#btnBusca");
+        btnBusca.bind("click",btnBuscaClick);
+    }
+
+    _constructor();
 }
 
 $(document).ready(function(){

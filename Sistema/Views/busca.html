@@ -36,49 +36,16 @@
 			</nav>
 		</header>
 		<main id="main">
-			<!--talvez caiba um mustache.render para os articles-->
-			<!--<article id="last">
-				<h2 id="title">Título</h2>
-				<p id="text">"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-				</p>
-				<nav id="taglist">
-					<ul>
-						<li>
-							<a href="#">Tag1</a>
-						</li>
-						<li>
-							<a href="#">Tag2</a>
-						</li>
+			<section>
+				<article>
+					<h2>Arquivos do site</h2>
+					<ul id="resultado">
+						<li><a href="#">Post 1</a></li>
+						<li><a href="#">Post 2</a></li>
+						<li><a href="#">Post 3</a></li>
 					</ul>
-				</nav>
-				<a href="#">Leia mais..</a>
-			</article>
-			<article id="penultimate">
-				<h2>Título</h2>
-				<p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-				<ul id="miniImagens">
-					<li>
-						<img src="common\images\evento2-a.jpg">
-					</li>
-					<li>
-						<img src="common\images\evento2-b.jpg">
-					</li>
-					<li>
-						<img src="common\images\evento2-d.jpg">
-					</li>
-				</ul>
-				<nav id="taglist">
-					<ul>
-						<li>
-							<a href="#">Tag1</a>
-						</li>
-						<li>
-							<a href="#">Tag2</a>
-						</li>
-					</ul>
-				</nav>
-				<a href="#">Leia mais..</a>
-			</article>-->
+				</article>
+			</section>
 		</main>
 		<aside>
 			<!-- para as sections um mustache.render tambem pode ser legal-->
@@ -131,31 +98,17 @@
 	<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
 	<script type="text/javascript" src="common/scripts/mustache.js"></script>
 	<script type="text/javascript" src="common/scripts/core.js"></script>
-	<script type="text/template" id="template">
-		{{#postagens}}
-			<article id="{{id}}">
-				<h2>{{titulo}}</h2>
-				<p>{{texto}}</p>
-				<ul id="miniImagens">
-					{{#imagens}}
-					<li>
-						<img src="{{caminhoImagem}}"/>
-					</li>
-					{{/imagens}}
+	<script type="text/template">
+		<section>
+			<article>
+				<h2>Arquivos do site</h2>
+				<ul id="resultado">
+					{{#postagens}}
+						<li><a href="post.html?idPost={{id}}">{{titulo}}</a></li>
+					{{/postagens}}
 				</ul>
-				<nav id="taglist">
-					<ul>
-						{{#tags}}
-						<li>
-							<a href="#">{{tag}}</a>
-						</li>
-						{{/tags}}
-					</ul>
-				</nav>
-				<a href="postagem.html?idPost={{id}}">{{tag}}</a>
 			</article>
-		{{/postagens}}
+		</section>
 	</script>
-	<script type="text/javascript" src="common/scripts/index.js"></script>
 	</body>
 </html>

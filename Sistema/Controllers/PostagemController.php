@@ -73,7 +73,7 @@ class PostagemController extends Controller{
 		}
 	}
 
-	public function loadIndexPosts(){
+	/*public function loadIndexPosts(){
 		//selecionar 2 ultimos posts
 		$postModel = new PostagemModel();
 		$imagemController = new ImagemController();
@@ -88,6 +88,50 @@ class PostagemController extends Controller{
 		}
 		//retorna-lo
                 return $this->JSONResult($postagens);
+	}*/
+
+
+	public function loadPosts(){
+		//selecionar ultimos posts, de acordo com o parametro, sera para a index, para artigos ou para eventos
+		//necessario valor idTipoPostagem ser enviado
+		$postModel = new PostagemModel();
+		$imagemController = new ImagemController();
+		$tagController = new TagController();
+		if ($_POST['tipoPostagem']==0)
+			$postagens = array("postagens" => $postModel->read());
+		else
+			$postagens = array("postagens" => $postModel->readByTipo($_POST['tipoPostagem']));
+		foreach ($postagens as $postagem){
+			//selecionar imagens desses dois ultimos posts
+			$postagem->imagens = $imagemController->read($postagem->id);
+			//selecionar tags desses dois ultimos posts
+			$postagem->tags = $tagController->read($postagem->id);
+			//montar array				
+		}
+		//retorna-lo
+                return $this->JSONResult($postagens);
+	}
+
+	public function loadPost(){
+		$postModel = new PostagemModel();
+		$imagemController = new ImagemController();
+		$tagController = new TagController();
+		
+		$postagem = $postModel->readById($_POST['idPost']);
+		//selecionar imagens desses dois ultimos posts
+		$postagem->imagens = $imagemController->read($postagem->id);
+		//selecionar tags desses dois ultimos posts
+		$postagem->tags = $tagController->read($postagem->id);
+						
+		//retorna-lo
+        return $this->JSONResult($postagem);
+	}
+
+	public function search(){
+		//tag vem dentro de $_POST
+		$postModel = new PostagemModel();
+		$postagens = array("postagens" => $postModel->search($_POST['tag']));
+		return $this->JSONResult($postagens);
 	}
 }
 ?>
