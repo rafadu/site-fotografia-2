@@ -10,9 +10,13 @@ var Busca = function(){
 	}
 
 	var loadSearchResults = function(data){
+            if (data.charAt(0)=="<"){
+                    $("#geral").remove();
+                    $("body").append(data);
+                }
 		var convertedData = core.convertToJSON(data);
 		var template = $("#template").html();
-		var output = Mustache.render(template,data);
+		var output = Mustache.render(template,convertedData);
 		$("#main").append(output);
 	}
 

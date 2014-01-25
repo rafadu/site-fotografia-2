@@ -27,7 +27,7 @@
 						<a href="contato.html">Contato</a>
 					</li>
 					<li>
-						<a href="busca.html">Arquivo</a>
+						<a href="busca.html?busca=">Arquivo</a>
 					</li>
 				</ul>
 				<div>
@@ -119,11 +119,11 @@
 	<script type="text/javascript" src="common/scripts/mustache.js"></script>
 	<script type="text/javascript" src="common/scripts/core.js"></script>
 	<script type="text/template" id="template">
-		{{#postagens}}
+		{{#postagem}}
 			<article id="{{id}}">
 				<h2>{{titulo}}</h2>
 				<p>{{texto}}</p>
-				<ul id="miniImagens">
+				<ul id="imagens">
 					{{#imagens}}
 					<li>
 						<img src="{{caminhoImagem}}"/>
@@ -140,7 +140,8 @@
 					</ul>
 				</nav>
 			</article>
-		{{/postagens}}
+		{{/postagem}}
 	</script>
+        <script type="text/javascript" src="common/scripts/post.js"></script>
 	</body>
 </html>

@@ -46,10 +46,17 @@ var Core = function(){
         var parametroPesquisa = $("#txtBusca").val();
         $(window.document.location).attr("href","busca.html?busca="+parametroPesquisa);
     }
+    
+    var txtBuscaClick = function(){
+        $("#txtBusca").val("");
+        $("#txtBusca").focus();
+    }
 
     var _constructor = function(){
         var btnBusca = $("#btnBusca");
         btnBusca.bind("click",btnBuscaClick);
+        var txtBusca = $("#txtBusca");
+        txtBusca.bind("click",txtBuscaClick);
     }
 
     _constructor();

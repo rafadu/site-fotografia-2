@@ -26,7 +26,7 @@
 						<a href="contato.html">Contato</a>
 					</li>
 					<li>
-						<a href="busca.html">Arquivo</a>
+						<a href="busca.html?busca=">Arquivo</a>
 					</li>
 				</ul>
 				<div>
@@ -36,7 +36,7 @@
 			</nav>
 		</header>
 		<main id="main">
-			<section>
+			<!--<section>
 				<article>
 					<h2>Arquivos do site</h2>
 					<ul id="resultado">
@@ -45,7 +45,7 @@
 						<li><a href="#">Post 3</a></li>
 					</ul>
 				</article>
-			</section>
+			</section>-->
 		</main>
 		<aside>
 			<!-- para as sections um mustache.render tambem pode ser legal-->
@@ -98,7 +98,7 @@
 	<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
 	<script type="text/javascript" src="common/scripts/mustache.js"></script>
 	<script type="text/javascript" src="common/scripts/core.js"></script>
-	<script type="text/template">
+	<script type="text/template" id="template">
 		<section>
 			<article>
 				<h2>Arquivos do site</h2>
@@ -110,5 +110,6 @@
 			</article>
 		</section>
 	</script>
+        <script type="text/javascript" src="common/scripts/busca.js"></script>
 	</body>
 </html>

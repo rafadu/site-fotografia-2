@@ -9,6 +9,10 @@ var Postagem = function(){
 	}
 
 	var loadPosts = function(data){
+            if (data.charAt(0)=="<"){
+                    $("#geral").remove();
+                    $("body").append(data);
+                }
 		var convertedData = core.convertToJSON(data);
 		var output = Mustache.render($("#template").html(),convertedData);
 		$("#main").append(output);
