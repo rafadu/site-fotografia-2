@@ -38,6 +38,7 @@ class TagModel implements ICrud{
                 $result = $mysqli->query($sqlCommand);
                 //guardar valores
                 $tags = array();
+				if (is_object($result)){
                 while($row = $result->fetch_assoc()){
                         $obj = new Tag();
                         $obj->tag = $row['tag'];
@@ -47,6 +48,7 @@ class TagModel implements ICrud{
                 $result->close();
                 $mysqli->close();
                 //retornar valores
+				}
                 return $tags;
         }
         public function update($object){}
@@ -61,6 +63,7 @@ class TagModel implements ICrud{
         		$mysqli = Connection::Open();
         		//fazer a busca
         		$result = $mysqli->query($sqlCommand);
+				if (is_object($result)){
         		while($row = $result->fetch_assoc()){
         			//guardar valor buscado
         			$id = $row['id'];
@@ -69,6 +72,7 @@ class TagModel implements ICrud{
         		$result->close();
         		$mysqli->close();
         		//retornar resultado
+				}
         		return $id;
         	}
         	catch(Exception $ex){

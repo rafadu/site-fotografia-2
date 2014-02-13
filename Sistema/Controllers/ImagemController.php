@@ -25,7 +25,7 @@ class ImagemController extends Controller{
 					$imageObj = new Imagem();
 					//passar valores
 					//caminhoImagem
-					$imageObj->caminhoImagem = $caminhoCompleto."\\".$file['name'];
+					$imageObj->caminhoImagem = $caminhoCompleto."\\".utf8_encode(($file['name']));
 					//link
 					$imageObj->link = "";
 					//idTipoImagem

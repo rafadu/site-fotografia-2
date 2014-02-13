@@ -10,8 +10,8 @@ class Connection {
     //classe de conexão com o banco de dados, sempre instanciar
     //ao realizar uma operação lá
     private static $address='localhost';
-    private static $dbuser='rafadu';
-    private static $dbpassword='rafael'; 
+    private static $dbuser='root';
+    private static $dbpassword=''; 
     private static $dbname='fotografia';
     
     //abre a conexão com o banco de dados e retorna um objeto mysqli que permite

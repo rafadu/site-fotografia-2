@@ -39,6 +39,7 @@ class ImagemModel implements ICrud{
             $result = $mysqli->query($sqlCommand);
             //guardar valores
             $imagens = array();
+			if (is_object($result)){
             while($row=$result->fetch_assoc()){
             	$obj = new Imagem();
             	$obj->caminhoImagem = $row['caminhoImagem'];
@@ -48,6 +49,7 @@ class ImagemModel implements ICrud{
             $result->close();
             $mysqli->close();
             //retornar valores
+			}
             return $imagens;
 		}
         public function update($object){}
