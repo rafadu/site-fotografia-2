@@ -23,7 +23,7 @@ class TagController extends Controller{
 							//criar objeto tag
 							$tagObj = new Tag();
 							//passar valor
-							$tagObj->tag = $value;
+							$tagObj->tag = utf8_decode($value);
 							//chamar metodo do model
 							$tagsIds[] = $tagModel->create($tagObj);
 						}

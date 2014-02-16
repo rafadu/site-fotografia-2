@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 /*
  * Usada para as requisições da aplicação, tanto requisições javascript como
  * de elementos forms. Devem ser passadas o nome da classe controller, o método

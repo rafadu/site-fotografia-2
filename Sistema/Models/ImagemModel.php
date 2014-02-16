@@ -28,6 +28,32 @@ class ImagemModel implements ICrud{
 			}
 		}
                 public function read(){}
+		public function readAll($idPostagem){
+			//read principal, entenda como o select usado para carregar as imagens dos posts da pagina de postagem
+
+            //criar comando sql
+            $sqlCommand = "SELECT caminhoImagem FROM Imagem WHERE idTipoImagem=1 AND idPostagem=$idPostagem";
+            //abrir conexão
+            $mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
+            //executar comando
+            $result = $mysqli->query($sqlCommand);
+            //guardar valores
+            $imagens = array();
+			if (is_object($result)){
+            while($row=$result->fetch_assoc()){
+            	$obj = new Imagem();
+            	$obj->caminhoImagem = $row['caminhoImagem'];
+            	$imagens[] = $obj;
+            }
+            //fechar conexão
+            $result->close();
+            $mysqli->close();
+            //retornar valores
+			}
+            return $imagens;
+		
+		}
 		public function readById($idPostagem){
 			//read principal, entenda como o select usado para carregar as imagens dos posts da pagina index
 
@@ -35,6 +61,7 @@ class ImagemModel implements ICrud{
             $sqlCommand = "SELECT caminhoImagem FROM Imagem WHERE idTipoImagem=1 AND idPostagem=$idPostagem LIMIT 3";
             //abrir conexão
             $mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
             //executar comando
             $result = $mysqli->query($sqlCommand);
             //guardar valores

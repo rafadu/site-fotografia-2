@@ -34,6 +34,7 @@ class TagModel implements ICrud{
                 $sqlCommand="SELECT T.tag FROM Tag T INNER JOIN PostagemTag PT ON T.id = PT.idTag WHERE PT.idPostagem = $idPostagem";
                 //abrir conexão
                 $mysqli = Connection::Open();
+				mysqli_set_charset($mysqli, 'utf8');
                 //executar comando
                 $result = $mysqli->query($sqlCommand);
                 //guardar valores

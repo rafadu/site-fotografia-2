@@ -33,6 +33,7 @@ class PostagemModel implements ICrud{
         	$sqlCommand ="SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 ORDER BY id DESC LIMIT 2";
         	//abrir conexão
         	$mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
         	//realizar o comando
         	$resultado = $mysqli->query($sqlCommand);
         	//guardar resultados
@@ -55,6 +56,7 @@ class PostagemModel implements ICrud{
                 $sqlCommand = "SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 AND idTipoPostagem = $idTipoPostagem ORDER BY id DESC LIMIT 4";
                 //abrir conexao
                 $mysqli = Connection::Open();
+				mysqli_set_charset($mysqli, 'utf8');
                 //executar comando
                 $resultado = $mysqli->query($sqlCommand);
                 //guardar resultados
@@ -78,6 +80,7 @@ class PostagemModel implements ICrud{
                 $sqlCommand = "SELECT id,titulo,texto FROM Postagem WHERE id = $idPostagem";
                 //abrir conexao
                 $mysqli = Connection::Open();
+				mysqli_set_charset($mysqli, 'utf8');
                 //executar comando
                 $resultado = $mysqli->query($sqlCommand);
                 //guardar resultados
@@ -101,6 +104,7 @@ class PostagemModel implements ICrud{
 
             //abrir conexao
             $mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
             //executar operação
             $resultado = $mysqli->query($sqlCommand);
             $postagens = array();
