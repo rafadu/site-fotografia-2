@@ -1,1 +1,0 @@
-Todas as pastas utilizadas
