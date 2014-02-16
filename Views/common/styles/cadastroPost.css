@@ -1,0 +1,14 @@
+#left{float: left;width: 48%;}
+#right {float: right!important;	width: 48%;}
+div{padding-top: 10px;padding-bottom: 10px;}
+#bottom{clear: both;}
+#top,#imagens,input[type="text"]{width: 99%;}
+#status{width: 100%;/*display: none;*/}
+#buttons{width: 150px;margin: 10px auto 0 auto!important;float: none!important;}
+p{font-size: 15px;}
+*{font-family:"Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
+label{font-size: 20px;}
+.img:nth-child(even){margin: 5px;}
+#img_1{margin-left: 1px}
+#add,#addTag{width: 40px;height: 40px;}
+.tag{width: 75px!important;}

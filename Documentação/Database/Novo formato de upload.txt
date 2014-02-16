@@ -1,0 +1,24 @@
+ATENÇÃO
+
+COMO DEVE FUNCIONAR A PARTIR DE AGORA O UPLOAD DAS FOTOS NO BLOG
+
+Após as críticas sobre guardar a imagem no banco, foi decidido que agora elas serão salvas em uma pasta responsável por guardar todas as imagens.
+
+Esta pasta ficará dentro da hierarquia de pastas do sistema, PORÉM NÃO DEVE SER COMITADA PARA O CONTROLE DE VERSÃO.
+
+O nome desta pasta é Uploads.
+
+Como funcionará os uploads:
+
+Quando o usuário submitar o formulário de postagem, ele estará junto enviando os arquivos, que ficarão guardados no array global $_FILES
+
+Há uma função chamada move_uploaded_files que recebe o nome do arquivo e o caminho destino, e move o arquivo para o caminho passado. Não é necessário fazer operações com o arquivo, somente é necessário seu nome.
+
+Portanto, os seguintes passos devem ser executados:
+
+Dentro da pasta Uploads, criar uma pasta com o Id da Postagem como nome dela.
+Copiar o caminho para a pasta uploads junto da pasta recem criada (Exemplo: /sistema/uploads/55)
+Quando registrar no banco a imagem, informar o caminho, mais o nome do arquivo
+Apos o registro, executar a função move_uploaded_files passando o nome do arquivo e o destino
+
+ 

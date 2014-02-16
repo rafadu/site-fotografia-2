@@ -1,0 +1,67 @@
+*{font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;text-decoration: none;list-style: none;}
+h1 {font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;font-size: 18px;text-align: center;}
+h2 {font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;color: #9900CC;text-align: center;}
+article{padding: 15px;}
+article p,a{font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
+article a{color: #9900CC;}
+article img{max-width: 100px;max-height: 150px;}
+footer{text-align: center;font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
+h3{text-align: center;color: #9900CC;}
+p{text-align: justify;font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
+nav ul{padding: 0px;margin: 0px;}
+nav ul li{display: inline;}
+nav ul li a{/*Posicionamento dos itens do menu*/padding: 2px 10px;display: inline-block;/*Estilo dos itens*/font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;color: #9900CC;text-align: right;}
+aside section nav ul li a img{padding: 5px;}
+#btnBusca{background: url(../images/lupa.png);background-repeat: no-repeat;cursor: pointer;width: 20px;height: 18px;border: 1px solid #FFF;}
+#txtBusca{width:200px;height: 25px;border: 1px solid #9900CC;border-radius: 3px;color:#9900CC;font-size: 12px;padding-left: 5px;}
+ 
+/*Posicionamento do site e de seus elementos*/
+#main{width: 600px;float: left;}
+#geral{width: 800px;margin: 20px auto 0 auto;}
+aside{float: right;}
+#parceiros img{height: 50px;width: 150px;}
+article ul{padding: 0px;margin: 0px;}
+article ul li{display: inline;}
+#resultado li {display: block;}
+article ul li img{padding: 2px 2px;display: inline-block;}
+footer{clear: both;}
+header nav{margin-bottom:10px;}
+header nav,#main,aside{margin-top: 20px;}
+header nav div{float: right;}
+article h2{margin-bottom: 20px;}
+article #miniImagens{margin-top: 20px;}
+article #taglist{margin: 15px 0 15px 0;}
+article>a{margin-top: 50px;}
+footer{padding-top: 20px;}
+
+ 
+/*Hovers*/
+article:hover{background-color: #EEE;border-radius: 15px;}
+header nav ul li a:hover{background-color: #EEE;border-radius: 5px;}
+aside section nav ul li a img:hover{background-color: #EEE;border-radius: 5px;}
+
+@media (max-width: 820px){
+	#geral{width: auto;}
+	#main{margin-top: 35px;}
+	#main,aside{width: auto;float:none;}
+	aside #feeds{float:left;}
+	aside #parceiros{float: right;}
+	article #miniImagens{width: 330px;margin: 0 auto;}
+}
+
+@media(max-width: 390px){
+	aside #parceiros{float: left;}
+	header nav{width: auto;background-color: #EEE;border-radius: 1.5em;}
+	header nav ul li{display: block;border-radius: 1.5em;}
+	header nav ul li a{display: block;width: auto;text-align: center;padding: 1em;}
+	header nav ul li a:hover{background-color: #FFF;}
+	header nav div{float: none;padding: 1em;margin-left: auto;margin-right: auto;}
+	#busca{width: 235px;margin: auto;}
+	#btnBusca{border: 1px solid #EEE;}
+	article #miniImagens{width: auto;margin: 0};
+}
+
+@media(max-width: 285px){
+	#busca{width: 145px;margin:auto;}
+	#txtBusca{width: auto;}
+}
