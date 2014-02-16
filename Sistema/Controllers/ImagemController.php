@@ -25,7 +25,7 @@ class ImagemController extends Controller{
 					$imageObj = new Imagem();
 					//passar valores
 					//caminhoImagem
-					$imageObj->caminhoImagem = $caminhoCompleto."\\".utf8_decode(($file['name']));
+					$imageObj->caminhoImagem = $caminhoCompleto."\\".$this->noSpecial(($file['name']));
 					//link
 					$imageObj->link = "";
 					//idTipoImagem
@@ -37,7 +37,7 @@ class ImagemController extends Controller{
 					$imagemModel->create($imageObj);
 
 					//mover arquivo pra pasta
-					move_uploaded_file($file['tmp_name'], $caminhoCompleto."\\".utf8_decode($file['name']));
+					move_uploaded_file($file['tmp_name'], $caminhoCompleto."\\".$this->noSpecial($file['name']));
 				}
 			}
 		}
