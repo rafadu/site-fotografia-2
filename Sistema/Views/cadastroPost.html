@@ -53,24 +53,58 @@
 								<input type="radio" name="tipoPostagem" value="1"/> Artigo<br/>
 								<input type="radio" name="tipoPostagem" value="2"/> Evento<br/>
 							</div>
-							<div id="tags">
-								<label for="">Tags</label> <br />
-								<p>OBS:Clique no botão "+" abaixo para adicionar campos e preencha cada um com uma tag</p>
-							</div>
-							<button id="addTag" type="button">+</button>
-						</div>
-						<div id="bottom">
 							<div id="status">
 								<label for="isAtivo">Status do Post</label><br/><br/>
 								<input type="radio" name="isAtivo" value="1" checked="checked"/> Ativo<br/>
 								<input type="radio" name="isAtivo" value="0"/> Inativo<br/>
 							</div>
+						</div>
+						<div id="bottom">
 							<div id="imagens">
 								<label for="">Imagens</label>
+								<!--<div id="todasImagens">
+									<p>Para indicar que uma imagem será apagada, clique no checkbox no lado esquerdo da imagem</p>
+									<ul id="miniImagens">
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-a.jpg">
+										</li>
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-b.jpg">
+										</li>
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-d.jpg">
+										</li>
+									</ul>	
+								</div>-->
 								<p>OBS: Clique no botão "+" abaixo para adicionar campos para colocar imagens</p>
 								<!--<input type="file" class="img" accept="image/*" name="img_1" id="img_1"/>-->
 							</div>
 							<button id="add" type="button">+</button>
+							<div id="tags">
+								<label for="">Tags</label> <br />
+								<!--<div id="todasTags">
+									<p>Pará indicar que uma tag será apagada, clique no checkbox no lado esquerdo da tag</p>
+									<ul>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+									</ul>
+								</div>-->
+								<p>OBS:Clique no botão "+" abaixo para adicionar campos e preencha cada um com uma tag</p>
+							</div>
+							<button id="addTag" type="button">+</button>
 							<div id="buttons">
 								<input type="button" name="btnCancel" value="Cancelar"/>
 								<input type="submit" name="btnSubmit" value="Enviar"/>
