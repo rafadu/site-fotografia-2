@@ -106,7 +106,7 @@ class TagController extends Controller{
 		//ir no banco verificar se a tag possui algum relacionamento lá
 		$resultado = $postTagController->selectByIdTag($idTag);
 		//se não tiver, mandar deletar tag
-		if (!$resultado)
+		if ($resultado->num_rows==0)
 			$tagModel->delete($idTag);
 	}
 }

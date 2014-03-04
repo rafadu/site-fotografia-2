@@ -177,6 +177,7 @@ class PostagemController extends Controller{
 		//chamar controller de tag para realizar update de informações das tags
 		$tagController = new TagController();
 		$tagController->update($idPostagem);
+                $this->redirect("..\Views\painel.html");
 	}
 }
 ?>

@@ -72,11 +72,12 @@ class ImagemController extends Controller{
 		//checar os checkbox de imagens
 		foreach($_POST as $field=>$value){
 			//se vier dentro de $_POST algum checkbox é porque ele já está selecionado
-			if (strpos($field,"idimagem") !== false){
+			if (strpos($field,"idimagem_") !== false){
 				//chamar model para remover caminho do banco de acordo com o valor do checkbox
-				$imgModel->delete($value);
+				$sub = substr($field, strrpos($field,"_")+1);
+                                $imgModel->delete((int)$sub);
 				//apagar arquivo da pasta de uploads
-				//$caminhoUpload = "..\Uploads\\$idPostagem";
+				unlink($value);
 			}
 
 		}
