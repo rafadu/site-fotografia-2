@@ -77,7 +77,7 @@ class PostagemModel implements ICrud{
 
         public function readById($idPostagem){
                 //criar comando sql
-                $sqlCommand = "SELECT id,titulo,texto FROM Postagem WHERE id = $idPostagem";
+                $sqlCommand = "SELECT id,titulo,texto,idTipoPostagem FROM Postagem WHERE id = $idPostagem";
                 //abrir conexao
                 $mysqli = Connection::Open();
 				mysqli_set_charset($mysqli, 'utf8');
@@ -89,6 +89,7 @@ class PostagemModel implements ICrud{
                 $obj->id = $row['id'];
                 $obj->titulo = $row['titulo'];
                 $obj->texto = $row['texto'];
+                $obj->idTipoPostagem = $row['idTipoPostagem'];
                  //fechar conexao
                 $resultado->close();
                 $mysqli->close();
@@ -121,7 +122,18 @@ class PostagemModel implements ICrud{
             //retornar valores
             return $postagens;
         }
-        public function update($object){}
-        public function delete($key,$value,$isText){}
+        public function update($object){
+            //as informações já foram carregadas, basta configurar o update
+            $sqlCommand = "UPDATE Postagem SET titulo='$object->titulo', texto='$object->texto',idTipoPostagem=$object->idTipoPostagem WHERE id=$object->id";
+            //abrir conexao
+            $mysqli = Connection::Open();
+            //executar update
+            $resultado = $mysqli->query($sqlCommand);
+            //fechar conexao
+            $mysqli->close();
+            //retornar resultado do update
+            return $resultado;
+        }
+        public function delete($id){}
 }
 ?>

@@ -44,14 +44,14 @@
 						</div>
 						<div id="left">
 							<label for="txtDescricao">Descrição</label><br/>
-							<textarea rows="10" cols="50" name="txtDescricao"></textarea>
+							<textarea rows="10" cols="50" name="txtDescricao" id="txtDescricao"></textarea>
 						</div>
 						<div id="right">
 							<div>
 								<label for="tipoPostagem">Tipo de Postagem</label><br/><br/>
-								<input type="radio" name="tipoPostagem" value="3" checked="true"/> Postagem Rápida<br/>
-								<input type="radio" name="tipoPostagem" value="1"/> Artigo<br/>
-								<input type="radio" name="tipoPostagem" value="2"/> Evento<br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_3" value="3" checked="true"/> Postagem Rápida<br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_1" value="1"/> Artigo<br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_2" value="2"/> Evento<br/>
 							</div>
 							<div id="status">
 								<label for="isAtivo">Status do Post</label><br/><br/>
@@ -111,7 +111,7 @@
 							</div>
 						</div>
 						<input type="hidden" name="controller" value="Postagem">
-						<input type="hidden" name="method" value="create">
+						<input type="hidden" name="method" id="method" value="create">
 					</form>
 				
 			</main>
@@ -126,7 +126,38 @@
 			</footer>
 		</div>
 		<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="common/scripts/mustache.js"></script>
 		<script type="text/javascript" src="common/scripts/core.js"></script>
 		<script type="text/javascript" src="common/scripts/cadastroPost.js"></script>
+		<script type="text/template" id="imgTemplate">
+			{{#postagem}}
+			<div id="todasImagens">
+				<p>Para indicar que uma imagem será apagada, clique no checkbox no lado esquerdo da imagem</p>
+				<ul id="miniImagens">
+					{{#imagens}}
+					<li>
+						<input type="checkbox" name="idimagem_{{id}}" value="{{id}}">
+						<img src="{{caminhoImagem}}">
+					</li>
+					{{/imagens}}
+				</ul>	
+			</div>
+			{{/postagem}}
+		</script>
+		<script type="text/template" id="tagTemplate">
+			{{#postagem}}
+			<div id="todasTags">
+			<p>Para indicar que uma tag será apagada, clique no checkbox no lado esquerdo da tag</p>
+				<ul>
+					{{#tags}}
+					<li>
+						<input type="checkbox" name="idTag_{{id}}" value="{{id}}">
+						<p>{{tag}}</p>
+					</li>
+					{{/tags}}
+				</ul>
+			</div>
+			{{/postagem}}
+		</script>
 	</body>
 </html>

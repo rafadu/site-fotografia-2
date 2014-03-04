@@ -31,7 +31,7 @@ class TagModel implements ICrud{
 	public function readById($idPostagem){
                 //read principal, entenda como read para os posts da index
                 //criar comando sql
-                $sqlCommand="SELECT T.tag FROM Tag T INNER JOIN PostagemTag PT ON T.id = PT.idTag WHERE PT.idPostagem = $idPostagem";
+                $sqlCommand="SELECT T.id,T.tag FROM Tag T INNER JOIN PostagemTag PT ON T.id = PT.idTag WHERE PT.idPostagem = $idPostagem";
                 //abrir conexão
                 $mysqli = Connection::Open();
 				mysqli_set_charset($mysqli, 'utf8');
@@ -42,6 +42,7 @@ class TagModel implements ICrud{
 				if (is_object($result)){
                 while($row = $result->fetch_assoc()){
                         $obj = new Tag();
+                        $obj->id = $row['id'];
                         $obj->tag = $row['tag'];
                         $tags[] = $obj;
                 }
@@ -53,7 +54,23 @@ class TagModel implements ICrud{
                 return $tags;
         }
         public function update($object){}
-        public function delete($key,$value,$isText){}
+        public function delete($id){
+                try{
+                        //criar comando
+                        $sqlCommand = "DELETE FROM Tag WHERE id = $id";
+                        //abrir conexao
+                        $mysqli = Connection::Open();
+                        //executar comando
+                        $resultado = $mysqli->query($sqlCommand);
+                        //fechar conexao
+                        $mysqli->close();
+                        //retornar resultado
+                        return $resultado;
+                }
+                catch(Exception $ex){
+                        throw new Exception("Erro ao deletar tag", $ex->getMessage());
+                }
+        }
 
         public function readByTag($tag){
         	try{

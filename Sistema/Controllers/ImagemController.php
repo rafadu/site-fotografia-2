@@ -46,7 +46,7 @@ class ImagemController extends Controller{
 		}
 	}
 
-public function readAll($idPostagem){
+	public function readAll($idPostagem){
 		try{
 			//chamar model
 			$obj = new ImagemModel();
@@ -66,6 +66,48 @@ public function readAll($idPostagem){
 			throw new Exception("Erro ao selecionar imagens. Fase Controller".$ex->getMessage());
 		}
 	}
+
+	public function update($idPostagem){
+		$imgModel = new ImagemModel();
+		//checar os checkbox de imagens
+		foreach($_POST as $field=>$value){
+			//se vier dentro de $_POST algum checkbox é porque ele já está selecionado
+			if (strpos($field,"idimagem") !== false){
+				//chamar model para remover caminho do banco de acordo com o valor do checkbox
+				$imgModel->delete($value);
+				//apagar arquivo da pasta de uploads
+				//$caminhoUpload = "..\Uploads\\$idPostagem";
+			}
+
+		}
+
+		$caminhoUpload = "..\Uploads\\";
+		//guardar caminho ate a pasta criada
+		$caminhoCompleto=$caminhoUpload."$idPostagem";
+
+		//verificar imagens novas
+		foreach($_FILES as $file){
+			if ($file['type']=="image/gif" || $file['type']=="image/jpeg" || $file['type']=="image/png"){
+				//criar object imagem
+				$imageObj = new Imagem();
+				//passar valores
+				//caminhoImagem
+				$imageObj->caminhoImagem = $caminhoCompleto."\\".$this->noSpecial(($file['name']));
+				//link
+				$imageObj->link = "";
+				//idTipoImagem
+				$imageObj->idTipoImagem = 1;
+				//idPostagem
+				$imageObj->idPostagem = $idPostagem;
+	
+				//gravar no banco
+				$imgModel->create($imageObj);
+
+				//mover arquivo pra pasta
+				move_uploaded_file($file['tmp_name'], $caminhoCompleto."\\".$this->noSpecial($file['name']));
+			}
+		}
 	}
+}
 
 ?>
