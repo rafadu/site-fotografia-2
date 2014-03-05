@@ -14,6 +14,7 @@ class ImagemController extends Controller{
 			//checar na pasta Uploads se existe pasta com o id
 			if(!is_dir($caminhoCompleto))
 				//se nao existir, criar a pasta
+				\mkdir($caminhoUpload);
 				\mkdir($caminhoCompleto);
 
 			//pra cada imagem, chamar Model, passando o caminhoCompleto  o nome do arquivo
