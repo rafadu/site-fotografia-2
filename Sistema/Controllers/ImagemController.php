@@ -14,7 +14,7 @@ class ImagemController extends Controller{
 			//checar na pasta Uploads se existe pasta com o id
 			if(!is_dir($caminhoCompleto))
 				//se nao existir, criar a pasta
-				\mkdir($caminhoUpload);
+				//\mkdir($caminhoUpload);
 				\mkdir($caminhoCompleto);
 
 			//pra cada imagem, chamar Model, passando o caminhoCompleto  o nome do arquivo
@@ -135,7 +135,7 @@ class ImagemController extends Controller{
 					//link
 					$imageObj->link =$_POST["txtLink"];
 					//idTipoImagem
-					$imageObj->idTipoImagem = 1;
+					$imageObj->idTipoImagem = $_POST['typeLink'];
 					//idPostagem
 					$imageObj->idPostagem = 0;
 
@@ -153,8 +153,29 @@ class ImagemController extends Controller{
 		}
 	}
 
-	
-	
+	public function updateLink(){
+		//terei como informação: imagem nova, se tiver, link, e idImagem
+		//se tiver imagem nova, preciso do caminho da imagem velha
+		try{
+			//criar objeto, passando o link, e id, idPostagem=0
+			//se tiver imagem nova
+				//no objeto, informar caminho novo
+				//unlink imagem velha (o caminho estará no $_POST)
+				//move_uploaded_file
+			//senao
+				//informar caminho da imagem velha mesmo
+			//chamar model para update no banco
+		}
+		catch(Exception $ex){
+			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());
+		}
+	}
+
+	public function selectLink(){
+		$imgModel = new ImagemModel();
+		$imagem = $imgModel->readLink($_POST['idImagem']);
+		return $this->JSONResult(array("imagem"=>$imagem));
+	}	
 }
 
 ?>

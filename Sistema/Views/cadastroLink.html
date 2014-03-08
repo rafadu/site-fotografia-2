@@ -38,19 +38,22 @@
 			<main id="main">
 				<form action="../Application/Dispatch.php" method="POST" enctype="multipart/form-data">
 					<label for="">Imagem</label><br /><br />
-					<input type="file" accept="image/*" name="imgLink" id="imgLink"/><br /><br/>
-					<!--<img src="common\images\evento2-a.jpg"><br /><br/>-->
+					<input type="file" accept="image/*" name="imgLink" id="imgLink"/><!--<br /><br/>
+					<img id="imgFeed" src=""><br /><br/>-->
 					<label for="">Link</label><br /><br/>
-					<input type="text" name="txtLink"/><br /><br/>
+					<input type="text" name="txtLink" id="txtLink"/><br /><br/>
 					<div id="buttons">
 						<input type="button" name="btnCancel" value="Cancelar"/>
 						<input type="submit" name="btnSubmit" value="Enviar"/>
 					</div>
 					<input type="hidden" name="controller" value="Imagem">
-					<input type="hidden" name="method" value="createLink">
-					<input type="hidden" name="typeLink" value="1">
+					<input type="hidden" name="method" id="method" value="createLink">
+					<input type="hidden" name="typeLink" id="typeLink" value="0">
 				</form>
 			</main>
 		</div>
+		<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="common/scripts/core.js"></script>
+		<script type="text/javascript" src="common/scripts/cadastroLink.js"></script>
 	</body>
 </html>

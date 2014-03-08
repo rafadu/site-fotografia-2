@@ -9,11 +9,14 @@ use Object\Imagem;
 class ImagemModel implements ICrud{
 		public function create($object){
 			try{
-                                //adicionar barras invertidas
-                                $object->caminhoImagem = str_replace("\\", "\\\\", $object->caminhoImagem);
+                //adicionar barras invertidas
+                $object->caminhoImagem = str_replace("\\", "\\\\", $object->caminhoImagem);
 				//criar comando sql
-				$sqlCommand = "INSERT INTO Imagem(caminhoImagem,link,idTipoImagem,idPostagem)
-						VALUES('$object->caminhoImagem','$object->link',$object->idTipoImagem,$object->idPostagem)";
+                $sqlCommand = "INSERT INTO Imagem(caminhoImagem,link,idTipoImagem";
+                if($object->idPostagem==0)
+				    $sqlCommand = $sqlCommand.") VALUES('$object->caminhoImagem','$object->link',$object->idTipoImagem)";
+                else
+                    $sqlCommand = $sqlCommand.",idPostagem) VALUES('$object->caminhoImagem','$object->link',$object->idTipoImagem,$object->idPostagem)";
 				//abrir conexão com o banco
 				$mysqli = Connection::Open();
 				//executar comando sql
@@ -92,6 +95,26 @@ class ImagemModel implements ICrud{
             $mysqli->close();
             //retornar resultado
             return $resultado;
+        }
+
+        public function readLink($idImagem){
+            $img = new Imagem();
+            //criar comando
+            $sqlCommand = "SELECT caminhoImagem,link FROM Imagem WHERE id = $idImagem";
+            //criar conexao
+            $mysqli = Connection::Open();
+            mysqli_set_charset($mysqli, 'utf8');
+            //executar comando
+            $resultado = $mysqli->query($sqlCommand);
+            //fechar conexao
+            $mysqli->close();
+            //criar objeto
+            $row = $resultado->fetch_assoc();
+            $img->id = $idImagem;
+            $img->caminhoImagem = $row['caminhoImagem'];
+            $img->link = $row['link'];
+            //retornar objeto
+            return $img;
         }
 }
 ?>
