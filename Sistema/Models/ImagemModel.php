@@ -83,7 +83,22 @@ class ImagemModel implements ICrud{
 			}
             return $imagens;
 		}
-        public function update($object){}
+        public function update($object){
+            //adicionar barras invertidas
+            $object->caminhoImagem = str_replace("\\", "\\\\", $object->caminhoImagem);
+            //criar comando
+            $sqlCommand = "UPDATE imagem SET caminhoImagem = '$object->caminhoImagem', link = '$object->link' 
+                    WHERE id = $object->id";
+            //abrir conexao
+            $mysqli = Connection::Open();
+            //executar comando
+            $resultado = $mysqli->query($sqlCommand);
+            //fechar conexao
+            $mysqli->close();
+            //retornar resultado
+            return $resultado;
+        }
+        
         public function delete($id){
             //criar comando
             $sqlCommand = "DELETE FROM imagem WHERE id = $id";
