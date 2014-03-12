@@ -33,6 +33,7 @@ class PostagemModel implements ICrud{
         	$sqlCommand ="SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 ORDER BY id DESC LIMIT 2";
         	//abrir conexão
         	$mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
         	//realizar o comando
         	$resultado = $mysqli->query($sqlCommand);
         	//guardar resultados
@@ -55,6 +56,7 @@ class PostagemModel implements ICrud{
                 $sqlCommand = "SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 AND idTipoPostagem = $idTipoPostagem ORDER BY id DESC LIMIT 4";
                 //abrir conexao
                 $mysqli = Connection::Open();
+				mysqli_set_charset($mysqli, 'utf8');
                 //executar comando
                 $resultado = $mysqli->query($sqlCommand);
                 //guardar resultados
@@ -75,9 +77,10 @@ class PostagemModel implements ICrud{
 
         public function readById($idPostagem){
                 //criar comando sql
-                $sqlCommand = "SELECT id,titulo,texto FROM Postagem WHERE id = $idPostagem";
+                $sqlCommand = "SELECT id,titulo,texto,idTipoPostagem FROM Postagem WHERE id = $idPostagem";
                 //abrir conexao
                 $mysqli = Connection::Open();
+				mysqli_set_charset($mysqli, 'utf8');
                 //executar comando
                 $resultado = $mysqli->query($sqlCommand);
                 //guardar resultados
@@ -86,6 +89,7 @@ class PostagemModel implements ICrud{
                 $obj->id = $row['id'];
                 $obj->titulo = $row['titulo'];
                 $obj->texto = $row['texto'];
+                $obj->idTipoPostagem = $row['idTipoPostagem'];
                  //fechar conexao
                 $resultado->close();
                 $mysqli->close();
@@ -97,10 +101,13 @@ class PostagemModel implements ICrud{
             //criar comando sql
             $sqlCommand = "SELECT P.id,P.titulo FROM Postagem P ";
             if ($tag!="")
-                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%') GROUP BY P.id";
+                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%') AND P.isAtivo = 1 GROUP BY P.id";
+            else
+                $sqlCommand = $sqlCommand."WHERE P.isAtivo = 1";
 
             //abrir conexao
             $mysqli = Connection::Open();
+			mysqli_set_charset($mysqli, 'utf8');
             //executar operação
             $resultado = $mysqli->query($sqlCommand);
             $postagens = array();
@@ -117,7 +124,18 @@ class PostagemModel implements ICrud{
             //retornar valores
             return $postagens;
         }
-        public function update($object){}
-        public function delete($key,$value,$isText){}
+        public function update($object){
+            //as informações já foram carregadas, basta configurar o update
+            $sqlCommand = "UPDATE Postagem SET titulo='$object->titulo', texto='$object->texto',idTipoPostagem=$object->idTipoPostagem WHERE id=$object->id";
+            //abrir conexao
+            $mysqli = Connection::Open();
+            //executar update
+            $resultado = $mysqli->query($sqlCommand);
+            //fechar conexao
+            $mysqli->close();
+            //retornar resultado do update
+            return $resultado;
+        }
+        public function delete($id){}
 }
 ?>
