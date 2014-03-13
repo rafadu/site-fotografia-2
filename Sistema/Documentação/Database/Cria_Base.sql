@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS fotografia.Imagem(
 	caminhoImagem varchar(150) NOT NULL,
 	link VARCHAR(150),
 	idTipoImagem INT NOT NULL,
-	idPostagem INT NOT NULL,
+	idPostagem INT,
 	CONSTRAINT FK_TipoImagem_Imagem
 		FOREIGN KEY FK_TipoImagem_Imagem (idTipoImagem)
 		REFERENCES fotografia.TipoImagem (id),

@@ -12,3 +12,10 @@ label{font-size: 20px;}
 #img_1{margin-left: 1px}
 #add,#addTag{width: 40px;height: 40px;}
 .tag{width: 75px!important;}
+#todasTags ul li{display: inline;}
+#todasTags ul li p{
+	padding: 2px 10px;
+	display: inline-block;
+	font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;
+	text-align: right;
+}

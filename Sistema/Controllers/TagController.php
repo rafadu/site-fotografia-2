@@ -23,7 +23,7 @@ class TagController extends Controller{
 							//criar objeto tag
 							$tagObj = new Tag();
 							//passar valor
-							$tagObj->tag = $value;
+							$tagObj->tag = utf8_decode($value);
 							//chamar metodo do model
 							$tagsIds[] = $tagModel->create($tagObj);
 						}
@@ -51,6 +51,63 @@ class TagController extends Controller{
 		catch(Exception $ex){
 			throw new Exception("Erro ao selecionar Tags para post na index. Fase Controller".getMessage());	
 		}
+	}
+
+	public function update($idPostagem){
+		$idTags = array();
+		//verificar se foram selecionadas tag para serem removidas
+		foreach($_POST as $field=>$value){
+			//se vier dentro de $_POST algum checkbox é porque ele já está selecionado
+			if (strpos($field,"idTag_") !== false){
+				//criar array dos ids das tags
+				$idTags[] = $value;
+			}
+		}
+		//mandar remover o relacionamento entre postagem e tags
+		$postTagController = new PostagemTagController();
+		$postTagController->delete($idPostagem,$idTags);
+		//chamar metodo delete para analisar se a tag deve ser deletada (Caso nao tenha nenhum relacionamento)
+		foreach($idTags as $idTag){
+			$this->delete($idTag);
+		}
+		
+		//verificar tags novas
+		$tagModel = new TagModel();
+		$tagsIds = array();
+		foreach($_POST as $field=>$value){
+			//strpos retorna posição em que ele encontra a substring
+			//maiores informações: http://www.php.net/manual/pt_BR/function.strpos.php
+			if (strpos($field,"tag_") !== false && strpos($field,"tag_")==0){
+				if (trim($value)!==''){
+					$idFromDatabase = $tagModel->readByTag($value);
+					if($idFromDatabase == 0){
+						//criar objeto tag
+						$tagObj = new Tag();
+						//passar valor
+						$tagObj->tag = utf8_decode($value);
+						//chamar metodo do model
+						$tagsIds[] = $tagModel->create($tagObj);
+					}
+					else{
+						//guardar
+						$tagsIds[]=$idFromDatabase;
+					}
+				}	
+			}
+		}
+
+		//fazer procedimento para vincular tags para a postagem
+		$postTagController->create($idPostagem,$tagsIds);
+	}
+
+	public function delete($idTag){
+		$postTagController = new PostagemTagController();
+		$tagModel = new TagModel();
+		//ir no banco verificar se a tag possui algum relacionamento lá
+		$resultado = $postTagController->selectByIdTag($idTag);
+		//se não tiver, mandar deletar tag
+		if ($resultado->num_rows==0)
+			$tagModel->delete($idTag);
 	}
 }
 ?>

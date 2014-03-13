@@ -4,7 +4,7 @@ h2 {font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;color: #99
 article{padding: 15px;}
 article p,a{font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
 article a{color: #9900CC;}
-article img{max-width: 100px;max-height: 150px;}
+#miniImagens img{max-width: 100px;max-height: 150px;}
 footer{text-align: center;font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
 h3{text-align: center;color: #9900CC;}
 p{text-align: justify;font-family: "Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
@@ -21,9 +21,9 @@ aside section nav ul li a img{padding: 5px;}
 aside{float: right;}
 #parceiros img{height: 50px;width: 150px;}
 article ul{padding: 0px;margin: 0px;}
-article ul li{display: inline;}
+#miniImagens li{display: inline;}
 #resultado li {display: block;}
-article ul li img{padding: 2px 2px;display: inline-block;}
+#miniImagens li img{padding: 2px 2px;display: inline-block;}
 footer{clear: both;}
 header nav{margin-bottom:10px;}
 header nav,#main,aside{margin-top: 20px;}
