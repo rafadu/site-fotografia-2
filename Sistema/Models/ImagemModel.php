@@ -30,8 +30,10 @@ class ImagemModel implements ICrud{
 				throw new Exception("Erro ao registrar imagem no banco. ".$ex->getMessage());
 			}
 		}
-                public function read(){}
-		public function readAll($idPostagem){
+        
+        public function read(){}
+		
+        public function readAll($idPostagem){
 			//read principal, entenda como o select usado para carregar as imagens dos posts da pagina de postagem
 
             //criar comando sql
@@ -130,6 +132,29 @@ class ImagemModel implements ICrud{
             $img->link = $row['link'];
             //retornar objeto
             return $img;
+        }
+
+        public function loadFeed($idTipoImagem){
+            $sqlCommand = "SELECT id, caminhoImagem,link, idTipoImagem 
+                FROM imagem WHERE idTipoImagem = $idTipoImagem";
+
+             $mysqli = Connection::Open();
+
+             $result = $mysqli->query($sqlCommand);
+
+             $feeds = array();
+             while($row=$result->fetch_assoc()){
+                $obj = new Imagem();
+                $obj->id = $row['id'];
+                $obj->caminhoImagem = $row['caminhoImagem'];
+                $obj->link = $row['link'];
+                $obj->idTipoImagem = $row['idTipoImagem'];
+                $feeds[] = $obj;
+             } 
+             
+             $result->close();
+             $mysqli->close();
+             return $feeds;
         }
 }
 ?>

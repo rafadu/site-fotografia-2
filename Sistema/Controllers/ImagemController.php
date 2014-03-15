@@ -111,8 +111,7 @@ class ImagemController extends Controller{
 		}
 	}
 
-	
-		public function createLink(){
+	public function createLink(){
 		try{
 			$caminhoUpload = "..\Uploads\\";
 			//guardar caminho ate a pasta criada
@@ -191,6 +190,16 @@ class ImagemController extends Controller{
 		$imgModel = new ImagemModel();
 		$imagem = $imgModel->readLink($_POST['idImagem']);
 		return $this->JSONResult(array("imagem"=>$imagem));
+	}
+
+	public function loadFeed(){
+		$idTipoImagem = $_POST['idTipoImagem'];
+		//criar model
+		$imgModel = new ImagemModel();
+		//chamar metodo da model
+		$result = $imgModel->loadFeed($idTipoImagem);
+		//retornar resultado em JSON
+		return $this->JSONResult(array("feeds"=>$result));
 	}	
 }
 

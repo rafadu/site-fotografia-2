@@ -7,6 +7,8 @@ var Busca = function(){
 		//requisiçao ajax
 		var parametros = {"controller":"Postagem","method":"search","tag":core.getUrlVar("busca")};
 		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parametros,loadSearchResults);
+		core.loadFeeds(2);
+        core.loadFeeds(3);
 	}
 
 	var loadSearchResults = function(data){
