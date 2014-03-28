@@ -21,8 +21,17 @@ class Connection {
 	$conn = new \mysqli(self::$address,self::$dbuser,self::$dbpassword,self::$dbname);
         return($conn);
     }
+	//OBS:não esqueça de fechar o mysqli depois
+	
+    public static function Authenticate(){
+	$conn = [];
+	$conn['address'] = $address;
+	$conn['dbuser'] = $dbuser;
+	$conn['dbpassword'] = $dbpassword;
+	$conn['dbname'] = $dbname;
+	return $conn;
+	}
     
-    //OBS:não esqueça de fechar o mysqli depois
 }
 
 ?>
