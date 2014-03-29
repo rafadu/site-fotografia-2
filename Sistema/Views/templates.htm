@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<script type="text/template" id="searchPainelTemplate">
+		<article>
+			<table id="tabelaResultado">
+				<tr>
+					<th>Postagem</th>
+					<th>Data de Criação</th>
+				</tr>
+				{{#postagens}}
+				<tr>
+					<td><a href="cadastroPost.html?acao=2&idPost={{id}}">{{titulo}}</a></td>
+					<td>{{dataCriacao}}</td>
+				</tr>
+				{{/postagens}}
+			</table>
+		</article>
+	</script>
 	<script type="text/template" id="feedTemplate">
 		<nav>
 			{{#feeds}} 
@@ -11,4 +28,5 @@
 			{{/feeds}}
 		</nav>
 	</script>
+	</head>	
 </html>

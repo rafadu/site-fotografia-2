@@ -99,9 +99,10 @@ class PostagemModel implements ICrud{
 
         public function search($tag){
             //criar comando sql
-            $sqlCommand = "SELECT P.id,P.titulo FROM Postagem P ";
+            $sqlCommand = "SELECT P.id,P.titulo, P.dataCriacao FROM Postagem P ";
             if ($tag!="")
-                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%') GROUP BY P.id";
+                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%')
+                            OR P.titulo LIKE '%$tag%' GROUP BY P.id";
 
             //abrir conexao
             $mysqli = Connection::Open();
@@ -114,6 +115,7 @@ class PostagemModel implements ICrud{
                 $obj = new Postagem();
                 $obj->id = $row['id'];
                 $obj->titulo = $row['titulo'];
+                $obj->dataCriacao = $row['dataCriacao'];
                 $postagens[]=$obj;
             }
             //fechar conxexão
