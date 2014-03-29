@@ -18,12 +18,12 @@
 						</li>
 
 						<li>
-							<a href="postagens.php?busca=">Postagens</a>
+							<a href="postagens.php?busca=&isAtivo=1">Postagens</a>
 							<!-- cadastroPost.html?acao=2 -->
 						</li>
 
 						<li>
-							<a href="#">Postagens Inativas</a>
+							<a href="postagens.php?busca=&isAtivo=0">Postagens Inativas</a>
 						</li>
 
 						<li>

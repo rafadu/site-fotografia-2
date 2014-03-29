@@ -143,7 +143,7 @@ class PostagemController extends Controller{
 	public function search(){
 		//tag vem dentro de $_POST
 		$postModel = new PostagemModel();
-		$postagens = array("postagens" => $postModel->search($_POST['tag']));
+		$postagens = array("postagens" => $postModel->search($_POST['tag'],$_POST['isAtivo']));
 		return $this->JSONResult($postagens);
 	}
 

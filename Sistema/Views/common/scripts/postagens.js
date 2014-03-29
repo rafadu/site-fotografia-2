@@ -6,7 +6,7 @@ var Postagens = function(){
 	var __constructor = function(){
 		var btnBuscaPost = $("#btnBuscaPost");
 		btnBuscaPost.bind("click",btnBuscaClick);
-		var parametros = {"controller":"Postagem","method":"search","tag":core.getUrlVar("busca")};
+		var parametros = {"controller":"Postagem","method":"search","tag":core.getUrlVar("busca"),"isAtivo":core.getUrlVar("isAtivo")};
 		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parametros,loadResults);
 	}
 
