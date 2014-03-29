@@ -101,8 +101,10 @@ class PostagemModel implements ICrud{
             //criar comando sql
             $sqlCommand = "SELECT P.id,P.titulo, P.dataCriacao FROM Postagem P ";
             if ($tag!="")
-                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%')
-                            OR P.titulo LIKE '%$tag%' GROUP BY P.id";
+                $sqlCommand = $sqlCommand."INNER JOIN PostagemTag PT ON P.id= PT.idPostagem WHERE (PT.idTag IN (SELECT id FROM Tag WHERE tag LIKE '%$tag%')
+                            OR P.titulo LIKE '%$tag%') AND P.isAtivo = 1 GROUP BY P.id";
+            else
+                $sqlCommand = $sqlCommand."WHERE P.isAtivo = 1";
 
             //abrir conexao
             $mysqli = Connection::Open();
