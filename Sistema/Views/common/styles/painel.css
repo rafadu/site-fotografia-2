@@ -5,15 +5,8 @@
 #topSection div div{margin: 0 auto 0 auto;}
 #btnEnviar{width: 28px;height: 28px;}
 #btnBuscaPost{background: url(../images/lupa.png);background-repeat: no-repeat;cursor: pointer;width: 20px;height: 18px;border: 1px solid #FFF;}
-#tabelaResultado
-{
-    border-collapse: collapse;
-    padding:0px 0px 0px 0px;
-    margin:0px auto 0px auto;
-}
-
-#tabelaResultado td,th 
-{
-    padding:10px;
-    border-spacing:0px 0px; 
-}
+#tabelaResultado{border-collapse: collapse;padding:0px 0px 0px 0px;margin:0px auto 0px auto;}
+#tabelaResultado td,th{padding:10px;border-spacing:0px 0px;}
+.selectImages{height:50px;width:150px;}
+.excluirLink{background: url(../images/red-x.png);background-repeat: no-repeat;cursor: pointer;width: 20px;height: 18px;border: 1px solid #FFF;}
+#btnNovoLink{border:none;background-color: #FFF;color:#9900CC;cursor: pointer;}

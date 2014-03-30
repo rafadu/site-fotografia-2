@@ -44,13 +44,9 @@
 				</nav>
 			</header>
 			<main id="main">
-				<div>
-					<input type="text" id="txtBusca" name="buscar" value="Pesquise postagens..."/>
-					<input type="submit" id="btnBuscaPost" name="ok" value=""/>
-				</div>
-				<section id="postagens">
-					<h1>Postagens</h1>
-
+				<section id="links">
+					<h1>Links</h1>
+					<input type="button" id="btnNovoLink" name="ok" value="Novo Link"/>
 				</section>
 			</main>
 			<footer>
@@ -66,6 +62,6 @@
 		<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
 		<script type="text/javascript" src="common/scripts/mustache.js"></script>
 		<script type="text/javascript" src="common/scripts/core.js"></script>
-		<script type="text/javascript" src="common/scripts/postagens.js"></script>
+		<script type="text/javascript" src="common/scripts/links.js"></script>
 	</body>
 </html>

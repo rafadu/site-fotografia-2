@@ -201,6 +201,15 @@ class ImagemController extends Controller{
 		//retornar resultado em JSON
 		return $this->JSONResult(array("feeds"=>$result));
 	}	
+
+	public function deleteFeed(){
+		$idImagem = $_POST['idImagem'];
+		//criar model
+		$imgModel = new ImagemModel();
+		//chamar metodo da model
+		$result = $imgModel->deleteFeed($idImagem);
+		unlink($_POST['caminhoImagem']);
+	}
 }
 
 ?>
