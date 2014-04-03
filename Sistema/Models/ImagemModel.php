@@ -156,5 +156,15 @@ class ImagemModel implements ICrud{
              $mysqli->close();
              return $feeds;
         }
+
+        public function deleteFeed($idImagem){
+            $sqlCommand = "DELETE FROM Imagem WHERE id = $idImagem";
+
+            $mysqli = Connection::Open();
+
+            $mysqli->query($sqlCommand);
+
+            $mysqli->close();
+        }
 }
 ?>
