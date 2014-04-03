@@ -25,10 +25,10 @@ class Connection {
 	
     public static function Authenticate(){
 	$conn = [];
-	$conn['address'] = $address;
-	$conn['dbuser'] = $dbuser;
-	$conn['dbpassword'] = $dbpassword;
-	$conn['dbname'] = $dbname;
+	$conn['address'] = self::$address;
+	$conn['dbuser'] = self::$dbuser;
+	$conn['dbpassword'] = self::$dbpassword;
+	$conn['dbname'] = self::$dbname;
 	return $conn;
 	}
     

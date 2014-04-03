@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (session_status() == PHP_SESSION_ACTIVE) {
+session_destroy();
+}
+?>
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -14,13 +19,14 @@
 		</header>
 		<main id="main">
 			<section id="form">
-				<form action="../Application/Dispatch.php" method="POST">
+				<form action="../Application/Logon.php" method="POST">
 					<label for="txtTitulo">Login</label> <br/>
 					<input type="text" name="txtLogin" id="txtLogin"/> <br />
 					<label for="txtTitulo">Senha</label> <br/>
 					<input type="password" name="txtSenha" id="txtSenha"/>
 					<input type="hidden" name="controller" value="Postagem">
 					<input type="hidden" name="method" id="method" value="create">
+					<input type="submit" name="btnSubmit" value="Logar"/>
 				</form>
 			</section>		
 		</main>
