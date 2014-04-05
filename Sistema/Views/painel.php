@@ -23,20 +23,20 @@ Auth::VerificaLogon();
 						</li>
 
 						<li>
-							<a href="postagens.php">Postagens</a>
+							<a href="postagens.php?busca=&isAtivo=1">Postagens</a>
 							<!-- cadastroPost.html?acao=2 -->
 						</li>
 
 						<li>
-							<a href="#">Postagens Inativas</a>
+							<a href="postagens.php?busca=&isAtivo=0">Postagens Inativas</a>
 						</li>
 
 						<li>
-							<a href="#">Feeds</a>
+							<a href="links.php?idTipoImagem=2">Feeds</a>
 						</li>
 
 						<li>
-							<a href="#">Parceiros</a>
+							<a href="links.php?idTipoImagem=3">Parceiros</a>
 						</li>
 
 						<!--<li>

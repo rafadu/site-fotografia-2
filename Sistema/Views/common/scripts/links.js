@@ -25,7 +25,7 @@ var Link = function(){
 	}
 
 	var btnNovoLink = function(){
-		$(window.document.location).attr("href","cadastroLink.html?acao=1&idType="+core.getUrlVar("idTipoImagem"));
+		$(window.document.location).attr("href","cadastroLink.php?acao=1&idType="+core.getUrlVar("idTipoImagem"));
 	}
 
 	var btnExcluirLinkClick = function(){

@@ -24,7 +24,7 @@ public static function Logon($login,$senha){
 	
 }
 
-public function PesquisaUsuario($usuario, $senha){
+private static function PesquisaUsuario($usuario, $senha){
 $conexaoBD = Connection::Open();
 	$sqlCommand = "SELECT nome,usuario,senha FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha' ";
 		$result = $conexaoBD->query($sqlCommand);

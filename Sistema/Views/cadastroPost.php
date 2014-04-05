@@ -23,7 +23,7 @@ Auth::VerificaLogon();
 							<a href="painel.php">Home</a>
 						</li>
 						<li>
-							<a href="postagens.html">Postagens</a>
+							<a href="postagens.php?busca=&isAtivo=1">Postagens</a>
 							<!-- cadastroPost.html?acao=2-->
 						</li>
 						<!--<li>

@@ -32,10 +32,10 @@ Auth::VerificaLogon();
 							<a href="#">Postagens Inativas</a>
 						</li>-->
 						<li>
-							<a href="#">Parceiros</a>
+							<a href="links.php?idTipoImagem=2">Parceiros</a>
 						</li>
 						<li>
-							<a href="#">Feeds</a>
+							<a href="links.php?idTipoImagem=3">Feeds</a>
 						</li>
 					</ul>
 				</nav>

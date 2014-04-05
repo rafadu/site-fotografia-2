@@ -14,10 +14,10 @@
 				<nav>
 					<ul>
 						<li>
-							<a href="painel.html">Home</a>
+							<a href="painel.php">Home</a>
 						</li>
 						<li>
-							<a href="cadastroPost.html?acao=1">Nova postagem</a>
+							<a href="cadastroPost.php?acao=1">Nova postagem</a>
 						</li>
 
 						<li>
