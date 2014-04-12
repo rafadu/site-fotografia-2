@@ -125,6 +125,12 @@ class PostagemController extends Controller{
                 return $this->JSONResult(array("postagens"=>$postagens));
 	}
 
+	public function loadLastPosts(){
+		$postModel = new PostagemModel();
+		$postagens = $postModel->read();
+		return $this->JSONResult(array("postagens"=>$postagens));
+	}
+
 	public function loadPost(){
 		$postModel = new PostagemModel();
 		$imagemController = new ImagemController();
@@ -166,6 +172,8 @@ class PostagemController extends Controller{
 		//$post->isAtivo = $_POST['isAtivo'];
 		$post->idTipoPostagem = $_POST['tipoPostagem'];
 
+		$post->isAtivo = $_POST['isAtivo'];
+
 		//chamar update de postagem, passando object
 		$postModel = new PostagemModel();
 		$postModel->update($post);
@@ -177,7 +185,7 @@ class PostagemController extends Controller{
 		//chamar controller de tag para realizar update de informações das tags
 		$tagController = new TagController();
 		$tagController->update($idPostagem);
-                $this->redirect("..\Views\painel.html");
+                $this->redirect("..\Views\painel.php");
 	}
 }
 ?>

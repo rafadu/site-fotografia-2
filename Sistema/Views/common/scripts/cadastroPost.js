@@ -50,6 +50,7 @@ var CadastroPost = function(){
 		$("#txtTitulo").val(convertedData['postagem']['titulo']);
 		$("#txtDescricao").val(convertedData['postagem']['texto']);
 		$("#tipoPostagem_"+convertedData['postagem']['idTipoPostagem']).prop("checked",true);
+		$("#isAtivo_"+convertedData['postagem']['isAtivo']).prop("checked",true);
 		var output = Mustache.render($("#imgTemplate").html(),convertedData);
 		$("#imagens").append(output);
 		output = Mustache.render($("#tagTemplate").html(),convertedData);

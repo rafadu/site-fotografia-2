@@ -30,7 +30,12 @@ class PostagemModel implements ICrud{
 	}
         public function read(){
         	//criar comando para o select principal (OBS:entenda aqui como Select dos posts para o Index)
-        	$sqlCommand ="SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 ORDER BY id DESC LIMIT 2";
+        	$sqlCommand ="SELECT id,titulo,texto FROM Postagem WHERE isAtivo=1 ";
+
+            if (isset($_POST["painel"]))
+                $sqlCommand = $sqlCommand . "ORDER BY id DESC LIMIT 5";
+            else
+                $sqlCommand = $sqlCommand . "ORDER BY id DESC LIMIT 2";
         	//abrir conexão
         	$mysqli = Connection::Open();
 			mysqli_set_charset($mysqli, 'utf8');
@@ -77,7 +82,7 @@ class PostagemModel implements ICrud{
 
         public function readById($idPostagem){
                 //criar comando sql
-                $sqlCommand = "SELECT id,titulo,texto,idTipoPostagem FROM Postagem WHERE id = $idPostagem";
+                $sqlCommand = "SELECT id,titulo,texto,idTipoPostagem,isAtivo FROM Postagem WHERE id = $idPostagem";
                 //abrir conexao
                 $mysqli = Connection::Open();
 				mysqli_set_charset($mysqli, 'utf8');
@@ -90,6 +95,7 @@ class PostagemModel implements ICrud{
                 $obj->titulo = $row['titulo'];
                 $obj->texto = $row['texto'];
                 $obj->idTipoPostagem = $row['idTipoPostagem'];
+                $obj->isAtivo = $row['isAtivo'];
                  //fechar conexao
                 $resultado->close();
                 $mysqli->close();
@@ -128,7 +134,7 @@ class PostagemModel implements ICrud{
         }
         public function update($object){
             //as informações já foram carregadas, basta configurar o update
-            $sqlCommand = "UPDATE Postagem SET titulo='$object->titulo', texto='$object->texto',idTipoPostagem=$object->idTipoPostagem WHERE id=$object->id";
+            $sqlCommand = "UPDATE Postagem SET titulo='$object->titulo', texto='$object->texto',idTipoPostagem=$object->idTipoPostagem, isAtivo=$object->isAtivo WHERE id=$object->id";
             //abrir conexao
             $mysqli = Connection::Open();
             //executar update

@@ -44,5 +44,21 @@
 				{{/feeds}}
 			</nav>
 		</script>
+		<script type="text/template" id="postsInPainel">
+			<ul>
+				{{#postagens}}
+				<li>
+					<a href="cadastroPost.php?acao=2&idPost={{id}}">{{titulo}}</a>
+				</li>
+				{{/postagens}}
+			</ul>
+		</script>
+		<script type="text/template" id="report">
+			<div>
+				{{#data}}
+				<p>{{TITLE}} : {{INFO}}</p>
+				{{/data}}
+			</div>
+		</script>
 	</head>	
 </html>

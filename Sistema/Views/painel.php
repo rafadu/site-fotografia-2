@@ -49,7 +49,7 @@ Auth::VerificaLogon();
 				<section id="topSection">
 					<div id="ultimasPostagens">
 						<h2>Ultimas Postagens</h2>
-						<ul>
+						<!--<ul>
 							<li>
 								<a href="#">Sobre fotografia</a><br>
 							</li>
@@ -65,7 +65,7 @@ Auth::VerificaLogon();
 							<li>
 								<a href="#">Lorem Ipsum Dolor</a>
 							</li>	
-						</ul>
+						</ul>-->
 					</div>
 					<!--<div id="novaPostagem">
 						<h2>Nova Postagem</h2>
@@ -83,7 +83,7 @@ Auth::VerificaLogon();
 				</section>
 				<section id="bottomSection">
 					<div id="estatisticas">
-						<h2>Estatísticas mensais</h2>
+						<h2>Estatísticas mensais</h2><br />
 						<!--<img src="common\images\grafico.jpg">-->
 					</div>
 					<!--<div id="postagemRapida">
@@ -105,6 +105,8 @@ Auth::VerificaLogon();
 			</footer>
 		</div>
 		<script type="text/javascript" src="common/scripts/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="common/scripts/mustache.js"></script>
 		<script type="text/javascript" src="common/scripts/core.js"></script>
+		<script type="text/javascript" src="common/scripts/painel.js"></script>
 	</body>
 </html>

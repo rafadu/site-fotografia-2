@@ -58,8 +58,8 @@ Auth::VerificaLogon();
 							</div>
 							<div id="status">
 								<label for="isAtivo">Status do Post</label><br/><br/>
-								<input type="radio" name="isAtivo" value="1" checked="checked"/> Ativo<br/>
-								<input type="radio" name="isAtivo" value="0"/> Inativo<br/>
+								<input type="radio" name="isAtivo" id="isAtivo_1" value="1" checked="checked"/> Ativo<br/>
+								<input type="radio" name="isAtivo" id="isAtivo_0" value="0"/> Inativo<br/>
 							</div>
 						</div>
 						<div id="bottom">
