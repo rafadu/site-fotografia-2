@@ -10,7 +10,7 @@ class ReportModel {
 							"SELECT 'Postagens Inativas' AS TITLE,COUNT(*) INFO FROM postagem WHERE isAtivo=0",
 							"SELECT 'Imagens' AS TITLE,COUNT(*) INFO FROM imagem WHERE idPostagem IS NOT NULL",
 							"SELECT 'Tags' AS TITLE,COUNT(*) INFO FROM tag",
-							"SELECT 'Tag mais utilizadas' AS TITLE,idTag INFO,COUNT(*) CONT FROM postagemTag GROUP BY idTag ORDER BY CONT DESC LIMIT 1");
+							"SELECT 'Tag mais utilizadas' AS TITLE,t.tag INFO,COUNT(*) CONT FROM postagemTag pt INNER JOIN  tag t ON pt.idTag = t.id GROUP BY idTag ORDER BY CONT DESC LIMIT 1");
 		$mysqli = Connection::Open();
 		mysqli_set_charset($mysqli, 'utf8');
         //realizar o comando

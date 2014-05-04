@@ -70,6 +70,10 @@ var Core = function(){
         });
     }
 
+    this.btnCancelClick = function(){
+        $(window.document.location).attr("href","painel.php");
+    }
+
     var _constructor = function(){
         var btnBusca = $("#btnBusca");
         btnBusca.bind("click",btnBuscaClick);

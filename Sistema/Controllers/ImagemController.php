@@ -87,6 +87,11 @@ class ImagemController extends Controller{
 		//guardar caminho ate a pasta criada
 		$caminhoCompleto=$caminhoUpload."$idPostagem";
 
+		if(!is_dir($caminhoCompleto))
+				//se nao existir, criar a pasta
+				//\mkdir($caminhoUpload);
+				\mkdir($caminhoCompleto);
+
 		//verificar imagens novas
 		foreach($_FILES as $file){
 			if ($file['type']=="image/gif" || $file['type']=="image/jpeg" || $file['type']=="image/png"){
@@ -142,7 +147,7 @@ class ImagemController extends Controller{
 				//mover arquivo pra pasta
 				move_uploaded_file($file['tmp_name'], $caminhoCompleto."\\".$this->noSpecial($file['name']));
 			}
-			$this->redirect("..\Views\painel.html");
+			$this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());
@@ -179,7 +184,7 @@ class ImagemController extends Controller{
                     
                     $imgModel = new ImagemModel();
                     $imgModel->update($img);
-                    $this->redirect("..\Views\painel.html");
+                    $this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());

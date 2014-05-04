@@ -27,7 +27,7 @@ var Postagens = function(){
 	var btnBuscaClick = function(){
         //pegar valor do textBox
         var parametroPesquisa = $("#txtBusca").val();
-        $(window.document.location).attr("href","postagens.php?busca="+parametroPesquisa);
+        $(window.document.location).attr("href","postagens.php?busca="+parametroPesquisa+"&isAtivo="+core.getUrlVar("isAtivo"));
     }
 
 	__constructor();

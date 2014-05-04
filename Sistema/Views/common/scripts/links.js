@@ -29,9 +29,12 @@ var Link = function(){
 	}
 
 	var btnExcluirLinkClick = function(){
-		var parametros = {"controller":"Imagem","method":"deleteFeed","idImagem":this.id,"caminhoImagem":$("#"+this.id).attr("src")};
-		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parametros,function(o){});
-		$(window.document.location).attr("href","links.php?idTipoImagem="+core.getUrlVar("idTipoImagem"));
+		var resposta= confirm("Deseja mesmo excluir esse link?");
+		if(resposta){
+			var parametros = {"controller":"Imagem","method":"deleteFeed","idImagem":this.id,"caminhoImagem":$("#"+this.id).attr("src")};
+			core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parametros,function(o){});
+			$(window.document.location).attr("href","links.php?idTipoImagem="+core.getUrlVar("idTipoImagem"));
+		}
 	}
 
 	__constructor();
