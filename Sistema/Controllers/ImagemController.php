@@ -142,7 +142,7 @@ class ImagemController extends Controller{
 				//mover arquivo pra pasta
 				move_uploaded_file($file['tmp_name'], $caminhoCompleto."\\".$this->noSpecial($file['name']));
 			}
-			$this->redirect("..\Views\painel.html");
+			$this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());
@@ -179,7 +179,7 @@ class ImagemController extends Controller{
                     
                     $imgModel = new ImagemModel();
                     $imgModel->update($img);
-                    $this->redirect("..\Views\painel.html");
+                    $this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
 			throw new Exception("Erro ao criar imagem. Fase Controller".$ex->getMessage());
