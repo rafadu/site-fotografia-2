@@ -83,7 +83,7 @@ Auth::VerificaLogon();
 				</section>
 				<section id="bottomSection">
 					<div id="estatisticas">
-						<h2>Estatísticas mensais</h2><br />
+						<h2>Estatísticas</h2><br />
 						<!--<img src="common\images\grafico.jpg">-->
 					</div>
 					<!--<div id="postagemRapida">
