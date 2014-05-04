@@ -78,7 +78,7 @@ class PostagemController extends Controller{
 
 			}
 
-			$this->redirect("..\Views\painel.html");
+			$this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
 			echo ("Erro ao criar postagem : ".$ex->getMessage());
