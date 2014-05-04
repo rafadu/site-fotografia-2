@@ -8,6 +8,8 @@ var CadastroPost = function(){
 		buttonAdd.bind("click",addField);
 		var buttonAddTag = $("#addTag");
 		buttonAddTag.bind("click",addTag);
+		var btnCancel = $("input[name='btnCancel']");
+		btnCancel.bind("click",core.btnCancelClick);
 		if(core.getUrlVar("acao")==2){
 			$("#method").val("update");
 			$("form").append("<input type='hidden' name='idPost' id='idPost' value='"+ core.getUrlVar("idPost") +"'>");

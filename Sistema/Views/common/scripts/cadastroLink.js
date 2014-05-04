@@ -4,6 +4,8 @@ var CadastroLink = function(){
 	var that = this;
 
 	var _constructor = function(){
+		var btnCancel = $("input[name='btnCancel']");
+		btnCancel.bind("click",core.btnCancelClick);
 		var idType = core.getUrlVar('idType');
 		if(idType==2)
 			$("#typeLink").val(2);
