@@ -87,6 +87,11 @@ class ImagemController extends Controller{
 		//guardar caminho ate a pasta criada
 		$caminhoCompleto=$caminhoUpload."$idPostagem";
 
+		if(!is_dir($caminhoCompleto))
+				//se nao existir, criar a pasta
+				//\mkdir($caminhoUpload);
+				\mkdir($caminhoCompleto);
+
 		//verificar imagens novas
 		foreach($_FILES as $file){
 			if ($file['type']=="image/gif" || $file['type']=="image/jpeg" || $file['type']=="image/png"){
