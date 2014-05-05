@@ -19,7 +19,7 @@ class PostagemController extends Controller{
 			//passar valores do formulário para o objeto
 			//titulo
 			if ($_POST['txtTitulo'] <>""){
-			$postagemObj->titulo = utf8_decode($_POST['txtTitulo']);
+			$postagemObj->titulo = $this->noSpecial(utf8_decode($_POST['txtTitulo']));
 			}
 			else{
 			throw new Exception('Postagem sem título');
@@ -160,7 +160,7 @@ class PostagemController extends Controller{
 		$post->id = $idPostagem;
 		
 		if ($_POST['txtTitulo'] <>"")
-			$post->titulo = utf8_decode($_POST['txtTitulo']);
+			$post->titulo = $this->noSpecial(utf8_decode($_POST['txtTitulo']));
 		else
 			throw new Exception('Postagem sem título');
 		

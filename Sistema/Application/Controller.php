@@ -27,7 +27,7 @@ class Controller {
     }
 	
 	public function noSpecial($str){
-	return preg_replace('/[^A-Za-z0-9\. -]/', '-', $str);
+	return preg_replace('/[^A-Za-z0-9\. -]/', '', $str);
 	}
 }
 
