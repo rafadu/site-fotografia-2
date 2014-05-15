@@ -5,8 +5,10 @@ var Busca = function(){
 
 	var _constructor = function(){
 		//requisiçao ajax
-		var parametros = {"controller":"Postagem","method":"search","tag":core.getUrlVar("busca")};
+		var parametros = {"controller":"Postagem","method":"search","tag":core.getUrlVar("busca"),"isAtivo":"1"};
 		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parametros,loadSearchResults);
+		core.loadFeeds(2);
+        core.loadFeeds(3);
 	}
 
 	var loadSearchResults = function(data){

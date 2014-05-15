@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/template" id="searchPainelTemplate">
+			<article>
+				<table id="tabelaResultado">
+					<tr>
+						<th>Postagem</th>
+						<th>Data de Criação</th>
+					</tr>
+					{{#postagens}}
+					<tr>
+						<td><a href="cadastroPost.php?acao=2&idPost={{id}}">{{titulo}}</a></td>
+						<td>{{dataCriacao}}</td>
+					</tr>
+					{{/postagens}}
+				</table>
+			</article>
+		</script>
+		<script type="text/template" id="searchLinks">
+			<article>
+				<table id="tabelaResultado">
+					{{#feeds}}
+					<tr>
+						<td>
+							<a href="cadastroLink.php?acao=2&idImagem={{id}}">
+								<img id="{{id}}" class="selectImages" src="{{caminhoImagem}}">
+							</a>
+						</td>
+						<td><input type="button" id="{{id}}" class="excluirLink" name="ok" value=""/></td>
+					</tr>
+					{{/feeds}}
+				</table>
+			</article>
+		</script>
+		<script type="text/template" id="feedTemplate">
+			<nav>
+				{{#feeds}} 
+				<ul>
+					<li>
+						<br><a href="{{link}}"><img src="{{caminhoImagem}}"></a>
+					</li>				
+				</ul>
+				{{/feeds}}
+			</nav>
+		</script>
+		<script type="text/template" id="postsInPainel">
+			<ul>
+				{{#postagens}}
+				<li>
+					<a href="cadastroPost.php?acao=2&idPost={{id}}">{{titulo}}</a>
+				</li>
+				{{/postagens}}
+			</ul>
+		</script>
+		<script type="text/template" id="report">
+			<div>
+				{{#data}}
+				<p>{{TITLE}} : {{INFO}}</p>
+				{{/data}}
+			</div>
+		</script>
+	</head>	
+</html>

@@ -1,0 +1,4 @@
+*{font-family:"Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;}
+label{font-size: 20px;}
+input[type="text"]{width: 99%;}
+#buttons{width: 150px;margin: 10px auto 0 auto!important;float: none!important;}

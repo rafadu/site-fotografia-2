@@ -18,9 +18,20 @@ class PostagemController extends Controller{
 
 			//passar valores do formulário para o objeto
 			//titulo
-			$postagemObj->titulo = $_POST['txtTitulo'];
+			if ($_POST['txtTitulo'] <>""){
+			$postagemObj->titulo = utf8_decode($_POST['txtTitulo']);
+			}
+			else{
+			throw new Exception('Postagem sem título');
+			}
+			
 			//texto
-			$postagemObj->texto = $_POST['txtDescricao'];
+			if ($_POST['txtDescricao'] <>""){
+			$postagemObj->texto = utf8_decode($_POST['txtDescricao']);
+			}
+			else{
+			throw new Exception('Postagem sem descrição');
+			}
 			//dataCriacao
 			$tz_object = new DateTimeZone('America/Sao_Paulo');
 			$datetime = new DateTime();
@@ -67,10 +78,10 @@ class PostagemController extends Controller{
 
 			}
 
-			$this->redirect("..\Views\painel.html");
+			$this->redirect("..\Views\painel.php");
 		}
 		catch(Exception $ex){
-			throw new Exception("Erro ao criar postagem na fase do Controller. ".$ex->getMessage());
+			echo ("Erro ao criar postagem : ".$ex->getMessage());
 		}
 	}
 
@@ -114,6 +125,12 @@ class PostagemController extends Controller{
                 return $this->JSONResult(array("postagens"=>$postagens));
 	}
 
+	public function loadLastPosts(){
+		$postModel = new PostagemModel();
+		$postagens = $postModel->read();
+		return $this->JSONResult(array("postagens"=>$postagens));
+	}
+
 	public function loadPost(){
 		$postModel = new PostagemModel();
 		$imagemController = new ImagemController();
@@ -121,7 +138,7 @@ class PostagemController extends Controller{
 		
 		$postagem = $postModel->readById($_POST['idPost']);
 		//selecionar imagens desses dois ultimos posts
-		$postagem->imagens = $imagemController->read($postagem->id);
+		$postagem->imagens = $imagemController->readAll($postagem->id);
 		//selecionar tags desses dois ultimos posts
 		$postagem->tags = $tagController->read($postagem->id);
 						
@@ -132,8 +149,43 @@ class PostagemController extends Controller{
 	public function search(){
 		//tag vem dentro de $_POST
 		$postModel = new PostagemModel();
-		$postagens = array("postagens" => $postModel->search($_POST['tag']));
+		$postagens = array("postagens" => $postModel->search($_POST['tag'],$_POST['isAtivo']));
 		return $this->JSONResult($postagens);
+	}
+
+	public function update(){
+		//pegar informações da postagem, formar object e mandar atualiza-las
+		$idPostagem = $_POST['idPost'];
+		$post = new Postagem();
+		$post->id = $idPostagem;
+		
+		if ($_POST['txtTitulo'] <>"")
+			$post->titulo = utf8_decode($_POST['txtTitulo']);
+		else
+			throw new Exception('Postagem sem título');
+		
+		if ($_POST['txtDescricao'] <>"")
+			$post->texto = utf8_decode($_POST['txtDescricao']);
+		else
+			throw new Exception('Postagem sem descrição');			
+
+		//$post->isAtivo = $_POST['isAtivo'];
+		$post->idTipoPostagem = $_POST['tipoPostagem'];
+
+		$post->isAtivo = $_POST['isAtivo'];
+
+		//chamar update de postagem, passando object
+		$postModel = new PostagemModel();
+		$postModel->update($post);
+
+		//chamar controller de imagem para realizar update de informações das imagens
+		$imgController = new ImagemController();
+		$imgController->update($idPostagem);
+
+		//chamar controller de tag para realizar update de informações das tags
+		$tagController = new TagController();
+		$tagController->update($idPostagem);
+                $this->redirect("..\Views\painel.php");
 	}
 }
 ?>

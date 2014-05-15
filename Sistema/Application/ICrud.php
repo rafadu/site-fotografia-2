@@ -20,7 +20,7 @@ namespace Application;
         public function create($object);
         public function read();
         public function update($object);
-        public function delete($key,$value,$isText);
+        public function delete($id);
     }
 
 ?>

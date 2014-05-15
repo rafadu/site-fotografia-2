@@ -1,0 +1,166 @@
+<?php
+session_start();
+require_once('../Application/Auth.php');
+use Application\Auth;
+Auth::VerificaLogon();
+?>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Fraan Letzel Fotografia - Painel de Controle</title>
+		<link rel="stylesheet" type="text/css" href="common/styles/reset.css">
+		<link rel="stylesheet" type="text/css" href="common/styles/site.css">
+		<link rel="stylesheet" type="text/css" href="common/styles/painel.css">
+		<link rel="stylesheet" type="text/css" href="common/styles/cadastroPost.css">
+	</head>
+	<body>
+		<div id="geral">
+			<header>
+				<h1>Fraan Letzel Fotografia</h1>
+				<nav>
+					<ul>
+						<li>
+							<a href="painel.php">Home</a>
+						</li>
+						<li>
+							<a href="postagens.php?busca=&isAtivo=1">Postagens</a>
+							<!-- cadastroPost.html?acao=2-->
+						</li>
+						<!--<li>
+							<a href="#">Postagens Inativas</a>
+						</li>
+						<li>
+							<a href="#">Parceiros</a>
+						</li>
+						<li>
+							<a href="#">Feeds</a>
+						</li>-->
+					</ul>
+				</nav>
+			</header>
+			<main id="main">
+				
+					<form action="../Application/Dispatch.php" method="POST" enctype="multipart/form-data">
+						<div id="top">
+							<label for="txtTitulo">Título</label> <br/>
+							<input type="text" name="txtTitulo" id="txtTitulo"/>
+						</div>
+						<div id="left">
+							<label for="txtDescricao">Descrição</label><br/>
+							<textarea rows="10" cols="50" name="txtDescricao" id="txtDescricao"></textarea>
+						</div>
+						<div id="right">
+							<div>
+								<label for="tipoPostagem">Tipo de Postagem</label><br/><br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_3" value="3" checked="true"/> Postagem Rápida<br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_1" value="1"/> Artigo<br/>
+								<input type="radio" name="tipoPostagem" id="tipoPostagem_2" value="2"/> Evento<br/>
+							</div>
+							<div id="status">
+								<label for="isAtivo">Status do Post</label><br/><br/>
+								<input type="radio" name="isAtivo" id="isAtivo_1" value="1" checked="checked"/> Ativo<br/>
+								<input type="radio" name="isAtivo" id="isAtivo_0" value="0"/> Inativo<br/>
+							</div>
+						</div>
+						<div id="bottom">
+							<div id="imagens">
+								<label for="">Imagens</label>
+								<!--<div id="todasImagens">
+									<p>Para indicar que uma imagem será apagada, clique no checkbox no lado esquerdo da imagem</p>
+									<ul id="miniImagens">
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-a.jpg">
+										</li>
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-b.jpg">
+										</li>
+										<li>
+											<input type="checkbox" name="idimagem" value="idImagem">
+											<img src="common\images\evento2-d.jpg">
+										</li>
+									</ul>	
+								</div>-->
+								<p>OBS: Clique no botão "+" abaixo para adicionar campos para colocar imagens</p>
+								<!--<input type="file" class="img" accept="image/*" name="img_1" id="img_1"/>-->
+							</div>
+							<button id="add" type="button">+</button>
+							<div id="tags">
+								<label for="">Tags</label> <br />
+								<!--<div id="todasTags">
+									<p>Pará indicar que uma tag será apagada, clique no checkbox no lado esquerdo da tag</p>
+									<ul>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+										<li>
+											<input type="checkbox" name="idTag" value="idTag">
+											<p>tag1</p>
+										</li>
+									</ul>
+								</div>-->
+								<p>OBS:Clique no botão "+" abaixo para adicionar campos e preencha cada um com uma tag</p>
+							</div>
+							<button id="addTag" type="button">+</button>
+							<div id="buttons">
+								<input type="button" name="btnCancel" value="Cancelar"/>
+								<input type="submit" name="btnSubmit" value="Enviar"/>
+							</div>
+						</div>
+						<input type="hidden" name="controller" value="Postagem">
+						<input type="hidden" name="method" id="method" value="create">
+					</form>
+				
+			</main>
+			<footer>
+				&copy; Exodia Corporation
+				| Fraan Lezel Fotografia
+				<time pubdate="pubdate">2013-18-06</time>
+
+				<!--<div id="login">
+				<a href="login.html">Login</a>
+			</div>-->
+			</footer>
+		</div>
+		<script type="text/javascript" src="common\scripts\jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="common/scripts/mustache.js"></script>
+		<script type="text/javascript" src="common/scripts/core.js"></script>
+		<script type="text/javascript" src="common/scripts/cadastroPost.js"></script>
+		<script type="text/template" id="imgTemplate">
+			{{#postagem}}
+			<div id="todasImagens">
+				<p>Para indicar que uma imagem será apagada, clique no checkbox no lado esquerdo da imagem</p>
+				<ul id="miniImagens">
+					{{#imagens}}
+					<li>
+						<input type="checkbox" name="idimagem_{{id}}" value="{{caminhoImagem}}">
+						<img src="{{caminhoImagem}}">
+					</li>
+					{{/imagens}}
+				</ul>	
+			</div>
+			{{/postagem}}
+		</script>
+		<script type="text/template" id="tagTemplate">
+			{{#postagem}}
+			<div id="todasTags">
+			<p>Para indicar que uma tag será apagada, clique no checkbox no lado esquerdo da tag</p>
+				<ul>
+					{{#tags}}
+					<li>
+						<input type="checkbox" name="idTag_{{id}}" value="{{id}}">
+						<p>{{tag}}</p>
+					</li>
+					{{/tags}}
+				</ul>
+			</div>
+			{{/postagem}}
+		</script>
+	</body>
+</html>

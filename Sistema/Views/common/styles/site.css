@@ -19,7 +19,7 @@ aside section nav ul li a img{padding: 5px;}
 #main{width: 600px;float: left;}
 #geral{width: 800px;margin: 20px auto 0 auto;}
 aside{float: right;}
-#parceiros img{height: 50px;width: 150px;}
+#parceiros img,#feeds img{height: 50px;width: 150px;}
 article ul{padding: 0px;margin: 0px;}
 #miniImagens li{display: inline;}
 #resultado li {display: block;}

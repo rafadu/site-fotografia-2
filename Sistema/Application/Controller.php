@@ -25,6 +25,10 @@ class Controller {
     public function JSONResult($array){
         echo json_encode($array);
     }
+	
+	public function noSpecial($str){
+	return preg_replace('/[^A-Za-z0-9\. -]/', '-', $str);
+	}
 }
 
 ?>

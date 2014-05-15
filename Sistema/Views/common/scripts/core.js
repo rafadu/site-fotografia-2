@@ -1,7 +1,7 @@
 var core = null;
 
 var Core = function(){
-	
+	var that = this;
 	this.IsAppleDevice = function(){
 		return navigator.userAgent.match(/iPhone/i) ||
              navigator.userAgent.match(/iPad/i) ||
@@ -52,11 +52,37 @@ var Core = function(){
         $("#txtBusca").focus();
     }
 
+    this.loadFeeds = function(idTipoImagem){
+        var parameters = {"controller":"Imagem","method":"loadFeed","idTipoImagem":idTipoImagem}
+        that.ajaxRequisition("POST","..\\Application\\Dispatch.php",parameters,makeTemplate);
+    }
+
+    var makeTemplate = function(data){
+        $.get("templates.htm",function(templates){
+            //template
+            var tmp = $(templates).filter("#feedTemplate").html();
+            var convertedData = core.convertToJSON(data);
+            var output = Mustache.render(tmp,convertedData);
+            if(convertedData['feeds'][0]['idTipoImagem']==2)
+                $("#feeds").append(output);
+            else
+                $("#parceiros").append(output);
+        });
+    }
+
+    this.btnCancelClick = function(){
+        $(window.document.location).attr("href","painel.php");
+    }
+
     var _constructor = function(){
         var btnBusca = $("#btnBusca");
         btnBusca.bind("click",btnBuscaClick);
         var txtBusca = $("#txtBusca");
         txtBusca.bind("click",txtBuscaClick);
+        if(document.URL.indexOf("contato.html")>0){
+            that.loadFeeds(2);
+            that.loadFeeds(3);
+        }
     }
 
     _constructor();

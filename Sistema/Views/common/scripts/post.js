@@ -6,6 +6,8 @@ var Post = function(){
 	var _constructor = function(){
 		var parameters = {"controller":"Postagem","method":"loadPost","idPost":core.getUrlVar("idPost")};
 		core.ajaxRequisition("POST","..\\Application\\Dispatch.php",parameters,loadPosts);
+		core.loadFeeds(2);
+        core.loadFeeds(3);
 	} 
 
 	var loadPosts = function(data){

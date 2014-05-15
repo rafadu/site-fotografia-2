@@ -27,5 +27,28 @@ class PostagemTagController extends Controller{
 			throw new Exception("Erro ao vincular postagem com tags. Fase Controller. ".$ex->getMessage());
 		}
 	}
+
+	public function delete($idPostagem,$idTags){
+		//chamar model para apagar relacionamento entre postagem e tag
+		$postTagModel = new PostagemTagModel();
+		try{
+			foreach ($idTags as $idTag) {
+				$postTagModel->delete($idPostagem,$idTag);
+			}
+		}
+		catch(Exception $ex){
+			throw new Exception("Erro ao desvincular tags da postagem. Fase Controller. ".$ex->getMessage());
+		}
+	}
+
+	public function selectByIdTag($idTag){
+		//chamar model e retornar resultado
+		$postTagModel = new PostagemTagModel();
+		try{
+			return $postTagModel->selectByIdTag($idTag);
+		}catch(Exception $ex){
+			throw new Exception("Erro ao pesquisar por tag. Fase Controller. ".$ex->getMessage());
+		}
+	}
 }
 ?>
